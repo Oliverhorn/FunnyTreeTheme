@@ -1,0 +1,13 @@
+.container,
+.container-main,
+.cms-block-container {
+    max-width: $container-max;
+}
+
+.cms-section {
+    margin-block: $space-8;
+}
+
+.cms-block {
+    margin-block: $space-6;
+}
