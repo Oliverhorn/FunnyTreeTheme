@@ -124,6 +124,13 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
     /* border-radius + overflow kommen global von .cms-block */
 }
 
+/* Hero: Block-Container innen randlos */
+.cms-page>.cms-section:first-child .cms-block-container,
+.content-main>.cms-section:first-child .cms-block-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 /* Mobile: optional den Abstand unter dem Hero reduzieren */
 @media (max-width: 768px) {
 
