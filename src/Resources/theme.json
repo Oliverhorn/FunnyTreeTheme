@@ -1,5 +1,9 @@
 {
   "name": "FunnyTreeTheme",
+  "label": {
+    "de-DE": "FunnyTree Theme",
+    "en-GB": "FunnyTree Theme"
+  },
   "author": "Funny Tree",
   "manufacturerLink": "https://funnytree.de",
   "license": "proprietary",
@@ -15,10 +19,43 @@
   ],
   "script": [
     "@Storefront",
-    "app/storefront/dist/storefront/js/funny-tree-theme/funny-tree-theme.js"
+    "app/storefront/src/main.js"
   ],
   "asset": [
     "@Storefront",
     "app/storefront/src/assets"
-  ]
+  ],
+  "previewMedia": "app/storefront/src/assets/preview.png",
+  "config": {
+    "fields": {
+      "sw-color-brand-primary": {
+        "value": "#16a34a",
+        "tab": "colors"
+      },
+      "sw-color-brand-secondary": {
+        "value": "#0ea5e9",
+        "tab": "colors"
+      },
+      "ft-color-accent": {
+        "type": "color",
+        "value": "#f97316",
+        "tab": "colors"
+      },
+      "ft-font-family-sans": {
+        "type": "fontFamily",
+        "value": "Poppins, Inter, system-ui, Arial, sans-serif",
+        "tab": "typography"
+      },
+      "ft-base-radius": {
+        "type": "text",
+        "value": "12px",
+        "tab": "design"
+      },
+      "ft-container-max": {
+        "type": "text",
+        "value": "1320px",
+        "tab": "layout"
+      }
+    }
+  }
 }
