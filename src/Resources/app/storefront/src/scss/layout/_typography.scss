@@ -14,6 +14,8 @@
 body {
     font-family: $font-sans;
     color: $body-color;
+    background: $page-bg;
+    /* ← globales Seiten-Grau */
 }
 
 /* Headings */

@@ -19,6 +19,10 @@ $brand-primary: var(--sw-color-brand-primary, #{$brand-primary-static});
 $brand-secondary: var(--sw-color-brand-secondary, #{$brand-secondary-static});
 $accent: var(--ft-color-accent, #{$accent-static});
 
+/* Page background (globales Seiten-Grau) */
+$page-bg-static: #f8f9fa; // wie im EMZ-Theme
+$page-bg: var(--ft-page-bg, #{$page-bg-static}); // backend-fähig
+
 /* ---- Textfarben (Tokens) ---- */
 $text-900: #0f172a; // Body
 $text-700: #333333; // Headlines / starke Texte

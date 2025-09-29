@@ -2,13 +2,16 @@
    LAYOUT: Container-Zentrierung für CMS
    - zentriert die Haupt-Container der Shopping Experiences
    - respektiert Full-Width-Sektionen
+   - erweitert um EMZ-Style: globales Seiten-Grau + weiße Boxed-Sections
    ========================================================================== */
+
+
 
 /* 1) Hauptbereich (Main / CMS-Wrapper) */
 .content-main,
 .cms-page {
     max-width: $container-max;
-    /* var(--ft-container-max, 1320px) */
+    /* var(--ft-container-max, 1320px oder 1400px) */
     margin-left: auto;
     margin-right: auto;
     padding-left: $space-4;
@@ -20,6 +23,12 @@
     max-width: $container-max;
     margin-left: auto;
     margin-right: auto;
+
+    /* EMZ-Look: weiße Karten mit Schatten */
+    background: #fff;
+    border-radius: $radius-base;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+    padding-block: 40px;
 }
 
 /* 3) Innere Wrapper verschiedener Shopware-Versionen/Plugins abfangen */
@@ -46,4 +55,16 @@
     max-width: none;
     padding-left: 0;
     padding-right: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding-block: 0;
+}
+
+/* 6) Optional: einzelne Sektionen bewusst ohne Box darstellen */
+.cms-section.ft-no-box {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding-block: 0 !important;
 }
