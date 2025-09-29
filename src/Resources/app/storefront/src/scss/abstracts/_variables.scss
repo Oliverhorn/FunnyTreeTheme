@@ -5,36 +5,34 @@
    - Typo, Spacing, Shadows
    ========================================================================== */
 
-/* ---- Colors: static bases (for SCSS math) ---- */
+/* ---- Colors: static bases (für SCSS-Berechnungen) ---- */
 $brand-primary-static: #16a34a; // Grün
 $brand-secondary-static: #0ea5e9; // Cyan/Blau
 $accent-static: #f97316; // Orange Akzent
 
-/* Derived hovers (immer aus *-static ableiten, NICHT aus var(--...)) */
+/* ---- Colors: derived hovers (nur aus *-static ableiten!) ---- */
 $brand-primary-hover: mix($brand-primary-static, #000, 6%);
 $accent-hover: mix($accent-static, #000, 12%);
 
-/* ---- Colors: runtime CSS variables with static fallbacks ---- */
+/* ---- Colors: runtime CSS variables mit Fallback ---- */
 $brand-primary: var(--sw-color-brand-primary, #{$brand-primary-static});
 $brand-secondary: var(--sw-color-brand-secondary, #{$brand-secondary-static});
 $accent: var(--ft-color-accent, #{$accent-static});
 
+/* ---- Textfarben (Tokens) ---- */
+$text-900: #0f172a; // Body
+$text-700: #333333; // Headlines / starke Texte
+$text-600: #555555; // Fließtext muted
+$text-500: #666666; // Subtle / small
+
 /* ---- Typography ---- */
 $font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
-/* Text scale */
-$text-900: #0f172a; // Body
-$text-700: #333333; // Headlines / strong
-$text-600: #555555; // Body muted
-$text-500: #666666; // Small / subtle
-
-/* ---- Radii, Container, Shadow ---- */
-/* Statische Defaults (für SCSS-Operationen falls nötig) */
+/* ---- Radii, Container, Shadows ---- */
 $radius-base-static: 12px;
 $container-max-static: 1320px;
 $shadow-md-static: 0 8px 24px rgba(0, 0, 0, .08);
 
-/* Laufzeit-Varianten mit Fallback */
 $radius-base: var(--ft-base-radius, #{$radius-base-static});
 $container-max: var(--ft-container-max, #{$container-max-static});
 $shadow-md: var(--ft-shadow-md, #{$shadow-md-static});
