@@ -16,12 +16,13 @@
     padding-right: $space-4;
 }
 
-/* 2) Boxed-Sections zentrieren (Full-Width ausnehmen) — aber NICHT für die 1. Section (Hero) */
-.cms-section:not(.cms-section--full-width):not(:first-of-type) {
+/* 2) Boxed-Sections zentrieren (Full-Width ausnehmen) */
+.cms-section:not(.cms-section--full-width) {
     max-width: $container-max;
     margin-left: auto;
     margin-right: auto;
 
+    /* EMZ-Look: weiße Karten mit Schatten */
     background: #fff;
     border-radius: $radius-base;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
@@ -75,54 +76,4 @@
     box-shadow: none !important;
     border-radius: 0 !important;
     padding-block: 0 !important;
-}
-
-/* ===========================
-   HERO (nur 1. Section) randlos
-   =========================== */
-
-/* a) Section selbst: keine Box, keine Abstände */
-.cms-section:first-of-type {
-    background: transparent !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding-block: 0 !important;
-    /* Deinen globalen vertical gap lassen wir wie definiert (siehe Regel 2b).
-       Mobile nehmen wir ihn unten raus – siehe Media Query. */
-}
-
-/* b) Innere Wrapper im Hero: linke/rechte Gutter entfernen */
-.cms-section:first-of-type .cms-section__container,
-.cms-section:first-of-type .cms-section-container,
-.cms-section:first-of-type .container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    /* Weiterhin zentriert im Container laufen lassen */
-    max-width: $container-max;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* c) Blöcke im Hero: wirklich randlos, dabei runde Ecken behalten */
-.cms-section:first-of-type .cms-block {
-    margin: 0 !important;
-    padding: 0 !important;
-    border-radius: $radius-base;
-    /* Bild wirkt „mit runden Ecken“ */
-    overflow: hidden;
-    /* schneidet Bild sauber */
-}
-
-/* d) Mobile: Abstand unter dem Hero auf 0, damit es „randlos“ wirkt */
-@media (max-width: 768px) {
-    .cms-section:first-of-type {
-        margin-bottom: 0 !important;
-    }
-}
-
-/* e) (Optional) EMZ/Legendary: falls ein zusätzlicher Wrapper im Hero paddings setzt */
-.cms-section:first-of-type [class*="emz-"] {
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
 }
