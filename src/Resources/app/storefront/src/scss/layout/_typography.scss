@@ -44,13 +44,14 @@ h3 {
 a {
     text-decoration: none;
     color: $accent;
-    /* definierte Akzentfarbe */
+    /* CSS-Var mit Fallback */
     transition: color .3s ease;
 }
 
 a:hover {
     text-decoration: underline;
-    color: darken($accent, 10%);
+    color: $accent-hover;
+    /* ← statt darken($accent, 10%) */
 }
 
 /* Paragraphs & Lists */
