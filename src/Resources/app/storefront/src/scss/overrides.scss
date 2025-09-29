@@ -1,17 +1,26 @@
 /*
 Override variable defaults
 ==================================================
-This file is used to override default SCSS variables from the Shopware Storefront or Bootstrap.
-
-Because of the !default flags, theme variable overrides have to be declared beforehand.
-https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults
+Nur SCSS-Variable-Overrides, die VOR @Storefront greifen sollen.
+Keine CSS-Klassen hier rein!
 */
-$border-radius: var(--ft-base-radius, 12px);
 
-.ft-sticky-cart {
-    position: sticky;
-    bottom: 0;
-    background: #fff;
-    border-top: 1px solid #eee;
-    padding: 10px;
-}
+/* Bootstrap/Storefront Defaults anpassen */
+$border-radius: 12px;
+$btn-border-radius: 12px;
+$btn-padding-y: .625rem;
+$btn-padding-x: 1rem;
+
+$body-color: #0f172a;
+/* slate-900 */
+$headings-color: #0b1220;
+$headings-font-weight: 700;
+
+/* Container-Breite: muss hier statisch sein (SCSS compile-time) */
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px
+);
