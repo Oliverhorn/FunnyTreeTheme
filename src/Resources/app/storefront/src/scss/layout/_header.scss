@@ -1,5 +1,12 @@
-.footer-main {
+.header-main {
     font-family: $font-sans;
-    background: #0f172a;
-    color: #fff;
+}
+
+.header-main .navigation-main {
+    max-width: $container-max;
+    margin-inline: auto;
+}
+
+.header-actions-btn {
+    border-radius: $radius-base;
 }
