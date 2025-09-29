@@ -1,13 +1,49 @@
-.container,
-.container-main,
-.cms-block-container {
+/* ==========================================================================
+   LAYOUT: Container-Zentrierung für CMS
+   - zentriert die Haupt-Container der Shopping Experiences
+   - respektiert Full-Width-Sektionen
+   ========================================================================== */
+
+/* 1) Hauptbereich (Main / CMS-Wrapper) */
+.content-main,
+.cms-page {
     max-width: $container-max;
+    /* var(--ft-container-max, 1320px) */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $space-4;
+    padding-right: $space-4;
 }
 
-.cms-section {
-    margin-block: $space-8;
+/* 2) Boxed-Sections zentrieren (Full-Width ausnehmen) */
+.cms-section:not(.cms-section--full-width) {
+    max-width: $container-max;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* 3) Innere Wrapper verschiedener Shopware-Versionen/Plugins abfangen */
+.cms-section__container,
+.cms-section-container,
+.cms-section .container {
+    max-width: $container-max;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $space-4;
+    padding-right: $space-4;
+}
+
+/* 4) Blöcke bekommen runde Ecken wie im Legendary-Look */
 .cms-block {
-    margin-block: $space-6;
+    border-radius: $radius-base;
+    overflow: hidden;
+}
+
+/* 5) Full-Width Sektionen bleiben randlos */
+.cms-section--full-width,
+.cms-section--full-width .cms-section__container,
+.cms-section--full-width .cms-section-container {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
 }
