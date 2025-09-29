@@ -77,3 +77,47 @@
     border-radius: 0 !important;
     padding-block: 0 !important;
 }
+
+/* 0) HERO-SECTION RANDLOS (nur die erste Section) */
+.cms-page>.cms-section:first-child,
+.content-main>.cms-section:first-child {
+    /* Box-Optik und Innenabstände der allgemeinen Regel überschreiben */
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding-block: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    /* Standard-Abstand nach unten beibehalten; mobil nehmen wir ihn raus (siehe Media Query unten) */
+}
+
+/* Blöcke im Hero ebenfalls randlos */
+.cms-page>.cms-section:first-child .cms-block,
+.content-main>.cms-section:first-child .cms-block {
+    padding: 0 !important;
+    margin: 0 !important;
+    /* Abgerundete Ecken bleiben am Block erhalten -> Bild wirkt “mit runden Ecken” */
+    border-radius: $radius-base;
+    overflow: hidden;
+}
+
+/* Innere Wrapper im Hero auf volle Breite ziehen */
+.cms-page>.cms-section:first-child .cms-section__container,
+.cms-page>.cms-section:first-child .cms-section-container,
+.cms-page>.cms-section:first-child .container,
+.content-main>.cms-section:first-child .cms-section__container,
+.content-main>.cms-section:first-child .cms-section-container,
+.content-main>.cms-section:first-child .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: none !important;
+}
+
+/* Mobile: Abstand unter dem Hero entfernen, damit es wirklich “randlos” wirkt */
+@media (max-width: 768px) {
+
+    .cms-page>.cms-section:first-child,
+    .content-main>.cms-section:first-child {
+        margin-bottom: 0 !important;
+    }
+}
