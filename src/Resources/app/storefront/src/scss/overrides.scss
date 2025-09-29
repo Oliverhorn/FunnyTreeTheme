@@ -7,3 +7,11 @@ Because of the !default flags, theme variable overrides have to be declared befo
 https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults
 */
 $border-radius: var(--ft-base-radius, 12px);
+
+.ft-sticky-cart {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid #eee;
+    padding: 10px;
+}

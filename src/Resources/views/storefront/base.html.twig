@@ -3,8 +3,10 @@
 {% block base_body_inner %}
 	{{ parent() }}
 
-	<div id="ft-theme-badge" style="position:fixed;right:10px;bottom:10px;padding:6px 10px;font:12px/1.2 system-ui;
-						                background:#ffd54d; color:#111; border-radius:6px; z-index:99999; box-shadow:0 2px 8px rgba(0,0,0,.2);">
-		FunnyTreeTheme ✓
-	</div>
+	{# Sticky Add-To-Cart nur auf Produktdetail #}
+	{% if page is defined and page.product is defined %}
+		<div class="ft-sticky-cart" data-sticky-add-to-cart>
+			{% sw_include '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' with { position: 'sticky' } %}
+		</div>
+	{% endif %}
 {% endblock %}
