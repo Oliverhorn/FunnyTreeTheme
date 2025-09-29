@@ -1,0 +1,13 @@
+.footer-main {
+    background: #0f172a;
+    color: #e2e8f0;
+
+    a {
+        color: #e2e8f0;
+    }
+
+    .footer-columns {
+        max-width: $container-max;
+        margin-inline: auto;
+    }
+}
