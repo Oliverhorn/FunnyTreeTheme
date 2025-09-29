@@ -5,8 +5,6 @@
    - erweitert um EMZ-Style: globales Seiten-Grau + weiße Boxed-Sections
    ========================================================================== */
 
-
-
 /* 1) Hauptbereich (Main / CMS-Wrapper) */
 .content-main,
 .cms-page {
@@ -29,6 +27,17 @@
     border-radius: $radius-base;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
     padding-block: 40px;
+}
+
+/* 2b) Vertikaler Abstand zwischen Sections */
+.cms-section {
+    margin-bottom: $space-8; // z. B. 2rem
+}
+
+@media (max-width: 768px) {
+    .cms-section {
+        margin-bottom: $space-6; // etwas kompakter auf Mobile
+    }
 }
 
 /* 3) Innere Wrapper verschiedener Shopware-Versionen/Plugins abfangen */
