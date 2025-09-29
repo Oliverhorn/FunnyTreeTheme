@@ -1,79 +1,154 @@
 /* ==========================================================================
-   LAYOUT: Container-Zentrierung für CMS
-   - zentriert die Haupt-Container der Shopping Experiences
-   - respektiert Full-Width-Sektionen
-   - erweitert um EMZ-Style: globales Seiten-Grau + weiße Boxed-Sections
+   CONTAINER / CMS-LAYOUT (EMZ-ähnlich, modernisiert)
+   - Seiten-Grau + weiße Boxed Sections
+   - keine doppelten Gutter: horizontale Abstände nur über den Main-Container
+   - Full-Width bleibt randlos
+   - Hero (1. Section) innen randlos, Box-Optik bleibt
    ========================================================================== */
 
-/* 1) Hauptbereich (Main / CMS-Wrapper) */
+/* ---- Design Tokens (falls nicht global definiert) ----------------------- */
+$container-max: var(--ft-container-max, 1400px);
+$gutter-desktop: 20px; // EMZ-Optik: Seiten-Gutter
+$gutter-mobile: 10px; // EMZ-Optik: Mobile-Gutter
+$space-6: 1.5rem; // Section-Abstand mobil
+$space-8: 2rem; // Section-Abstand Desktop
+$radius-base: 8px; // Karten-Radius
+$shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
+
+/* ---- 1) Hauptbereich / CMS-Wrapper ------------------------------------- */
+/* Nur HIER kommen horizontale Gutter her, um doppelte Abstände zu vermeiden. */
 .content-main,
 .cms-page {
     max-width: $container-max;
-    /* var(--ft-container-max, 1320px oder 1400px) */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: $space-4;
-    padding-right: $space-4;
+    margin-inline: auto;
+    padding-inline: $gutter-desktop;
 }
 
-/* 2) Boxed-Sections zentrieren (Full-Width ausnehmen) */
+@media (max-width: 768px) {
+
+    .content-main,
+    .cms-page {
+        padding-inline: $gutter-mobile;
+    }
+}
+
+/* ---- 2) Section-Boxen (weiße Karten) ----------------------------------- */
+/* Wir geben NUR vertikales Padding auf die Section. Horizontal kommt vom Main. */
 .cms-section:not(.cms-section--full-width) {
     max-width: $container-max;
-    margin-left: auto;
-    margin-right: auto;
-
-    /* EMZ-Look: weiße Karten mit Schatten */
+    margin-inline: auto;
     background: #fff;
     border-radius: $radius-base;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+    box-shadow: $shadow-card;
     padding-block: 40px;
+    /* vertikal wie EMZ */
+    /* KEIN padding-inline hier -> sonst doppelter Gutter! */
 }
 
-/* 2b) Vertikaler Abstand zwischen Sections */
+/* Vertikaler Abstand zwischen Sections */
 .cms-section {
-    margin-bottom: $space-8; // z. B. 2rem
+    margin-bottom: $space-8;
 }
 
 @media (max-width: 768px) {
     .cms-section {
-        margin-bottom: $space-6; // etwas kompakter auf Mobile
+        margin-bottom: $space-6;
     }
 }
 
-/* 3) Innere Wrapper verschiedener Shopware-Versionen/Plugins abfangen */
+/* ---- 3) Innere Wrapper neutralisieren ---------------------------------- */
+/* Verhindert zusätzliche Gutter innerhalb der Section. */
 .cms-section__container,
 .cms-section-container,
 .cms-section .container {
     max-width: $container-max;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: $space-4;
-    padding-right: $space-4;
+    margin-inline: auto;
+    padding-inline: 0;
+    /* wichtig: keine doppelten Gutter */
 }
 
-/* 4) Blöcke bekommen runde Ecken wie im Legendary-Look */
+/* ---- 4) Blöcke: runde Ecken + sauberes Clipping ------------------------ */
 .cms-block {
     border-radius: $radius-base;
     overflow: hidden;
+    /* Bilder/Slider sauber innerhalb des Radius */
+    /* Block-Padding NICHT global setzen, um den Hero später randlos zu bekommen.
+     (EMZ setzt padding am Block; wir machen’s gezielt nur, wo nötig) */
 }
 
-/* 5) Full-Width Sektionen bleiben randlos */
+/* ---- 5) Full-Width Sektionen wirklich randlos -------------------------- */
 .cms-section--full-width,
 .cms-section--full-width .cms-section__container,
 .cms-section--full-width .cms-section-container {
     max-width: none;
-    padding-left: 0;
-    padding-right: 0;
+    padding-inline: 0;
     background: transparent;
     border-radius: 0;
     box-shadow: none;
     padding-block: 0;
 }
 
-/* 6) Optional: einzelne Sektionen bewusst ohne Box darstellen */
+/* ---- 6) Utility: Section bewusst ohne Box ------------------------------- */
 .cms-section.ft-no-box {
     background: transparent !important;
     box-shadow: none !important;
     border-radius: 0 !important;
     padding-block: 0 !important;
+}
+
+/* ---- 7) HERO: Erste Section innen randlos, Box bleibt ------------------ */
+/* Ziel: Bild liegt bündig an der weißen Box-Kante, runde Ecken am Block. */
+.cms-page>.cms-section:first-child:not(.cms-section--full-width),
+.content-main>.cms-section:first-child:not(.cms-section--full-width) {
+    /* Box-Optik bleibt: background/radius/shadow NICHT verändern */
+    padding-block: 0 !important;
+    /* vertikales Section-Padding im Hero aus */
+}
+
+/* Hero: innere Wrapper ohne zusätzliche Gutter */
+.cms-page>.cms-section:first-child .cms-section__container,
+.cms-page>.cms-section:first-child .cms-section-container,
+.cms-page>.cms-section:first-child .container,
+.content-main>.cms-section:first-child .cms-section__container,
+.content-main>.cms-section:first-child .cms-section-container,
+.content-main>.cms-section:first-child .container {
+    padding-inline: 0 !important;
+}
+
+/* Hero: Blöcke ohne Padding -> Bild liegt bündig */
+.cms-page>.cms-section:first-child .cms-block,
+.content-main>.cms-section:first-child .cms-block {
+    padding: 0 !important;
+    margin: 0 !important;
+    /* optional: keine Block-Margins */
+    /* border-radius + overflow kommen global von .cms-block */
+}
+
+/* Mobile: optional den Abstand unter dem Hero reduzieren */
+@media (max-width: 768px) {
+
+    .cms-page>.cms-section:first-child,
+    .content-main>.cms-section:first-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ---- 8) Feinheiten / Robustheit ---------------------------------------- */
+/* Falls einzelne Plugins/Blöcke intern doch padding geben, im Hero entfernen */
+.cms-page>.cms-section:first-child [class*="emz-"],
+.content-main>.cms-section:first-child [class*="emz-"] {
+    padding: 0 !important;
+    background: inherit;
+    /* Box bleibt weiß */
+    box-shadow: inherit;
+}
+
+/* Barrierefreiheit: weichere Animationen respektieren (optional) */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
