@@ -159,3 +159,44 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
         scroll-behavior: auto !important;
     }
 }
+
+/* ==============================================================
+   HERO „RANDLOS INNEN“ – EMZ-Optik behalten, aber alle Paddings aus
+   Quellen mit Padding in EMZ/Shopware:
+   - Section selbst (.cms-section)
+   - Block-Container (.cms-block-container)
+   - Block (.cms-block)
+   =============================================================== */
+
+/* 1) Section-Padding im Hero aus (Hintergrund/Radius/Shadow bleiben!) */
+:where(.cms-page, .content-main)>.cms-section:first-child:not(.cms-section--full-width) {
+    padding: 0 !important;
+    /* überschreibt EMZ: padding: 40px 20px / 10px 10px */
+    /* margin (20px auto) bleibt bestehen → weiße Box bleibt sichtbar */
+}
+
+/* 2) Block-Container-Padding im Hero aus (Shopware legt hier 20px 0 o.ä. an) */
+:where(.cms-page, .content-main)>.cms-section:first-child .cms-block-container {
+    padding: 0 !important;
+}
+
+/* 3) Block-Padding im Hero aus (EMZ: padding: 20px; mobil: 15px 0) */
+:where(.cms-page, .content-main)>.cms-section:first-child .cms-block {
+    padding: 0 !important;
+    margin: 0 !important;
+    /* optional: Blocks bündig aneinander */
+    /* runde Ecken + clipping kommen global aus .cms-block { border-radius; overflow: hidden } */
+}
+
+/* 4) Gutter der inneren Wrapper im Hero aus (verhindert doppelte horizontale Abstände) */
+:where(.cms-page, .content-main)>.cms-section:first-child :is(.cms-section__container, .cms-section-container, .container) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* 5) Optional: auf Mobile den Abstand unter dem Hero reduzieren */
+@media (max-width: 768px) {
+    :where(.cms-page, .content-main)>.cms-section:first-child {
+        margin-bottom: 0 !important;
+    }
+}
