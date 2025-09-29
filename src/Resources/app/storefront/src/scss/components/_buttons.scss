@@ -1,11 +1,19 @@
+/* Buttons – FunnyTree / Legendary-Stil */
+
 .btn {
     border-radius: $radius-base;
     font-weight: 600;
+    transition: filter .15s ease, transform .08s ease, box-shadow .15s ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
 }
 
 .btn-primary {
     background: $brand-primary;
     border-color: $brand-primary;
+    color: #fff;
 }
 
 .btn-primary:hover {
@@ -20,6 +28,22 @@
 
 .btn-outline-primary:hover {
     background: rgba(22, 163, 74, .08);
-    /* primary-10% */
+    /* ~ primary @10% */
     border-color: rgba(0, 0, 0, .12);
+}
+
+.btn-secondary {
+    background: $accent;
+    border-color: $accent;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    filter: brightness(.95);
+}
+
+/* kleine Helfer – gleiche Höhe in Cards/Listen */
+.btn-block,
+.w-100 {
+    width: 100%;
 }
