@@ -1,13 +1,74 @@
+/* FOOTER – dunkler, klarer Kontrast, ruhige Typo */
+
 .footer-main {
     background: #0f172a;
+    /* dark slate */
     color: #e2e8f0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 
-    a {
-        color: #e2e8f0;
-    }
+.footer-main .container,
+.footer-main .container-fluid {
+    max-width: $container-max;
+}
 
-    .footer-columns {
-        max-width: $container-max;
-        margin-inline: auto;
-    }
+.footer-columns {
+    row-gap: 1.25rem;
+}
+
+.footer-column-headline {
+    color: #f1f5f9;
+    font-weight: 700;
+    margin-bottom: .75rem;
+}
+
+.footer-link-item,
+.footer-link {
+    color: #cbd5e1;
+    transition: color .15s ease, text-decoration-color .15s ease;
+}
+
+.footer-link-item:hover,
+.footer-link:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, .6);
+}
+
+/* Newsletter im Footer */
+.footer-newsletter {
+    margin-top: .5rem;
+}
+
+.footer-newsletter .form-control {
+    border-radius: $radius-base;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+}
+
+.footer-newsletter .form-control::placeholder {
+    color: rgba(255, 255, 255, .6);
+}
+
+.footer-newsletter .btn {
+    border-radius: $radius-base;
+    background: $accent;
+    /* CSS-Var mit Fallback */
+    border: 0;
+    color: #fff;
+}
+
+.footer-newsletter .btn:hover {
+    background: $accent-hover;
+    /* aus *-static abgeleitet */
+}
+
+/* Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    color: #94a3b8;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
 }

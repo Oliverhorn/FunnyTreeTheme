@@ -1,12 +1,73 @@
+/* HEADER – kompakt, runde Actions, klare Suche */
+
 .header-main {
-    font-family: $font-sans;
+    background: #fff;
+    border-bottom: 1px solid #eef1f4;
 }
 
-.header-main .navigation-main {
+.header-main .container,
+.header-main .container-fluid {
     max-width: $container-max;
-    margin-inline: auto;
+}
+
+.header-logo-picture img {
+    max-height: 42px;
+    /* etwas kompakter */
+}
+
+.header-actions {
+    display: flex;
+    gap: .25rem;
 }
 
 .header-actions-btn {
+    border: 1px solid #e8edf2;
     border-radius: $radius-base;
+    padding: .5rem .65rem;
+    background: #fff;
+    transition: background .15s ease, border-color .15s ease, transform .08s ease;
+}
+
+.header-actions-btn:hover {
+    background: rgba(0, 0, 0, .04);
+    border-color: #e2e8f0;
+}
+
+.header-actions-btn:active {
+    transform: translateY(1px);
+}
+
+/* Suche */
+.header-search {
+    min-width: min(420px, 60vw);
+}
+
+.header-search-input {
+    border-radius: $radius-base;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+.header-search-input:focus {
+    outline: none;
+    border-color: $brand-primary;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, .15);
+    /* $brand-primary-static @15% */
+}
+
+/* Hauptnavigation: leicht luftiger */
+.main-navigation {
+    border-top: 1px solid #f1f5f9;
+    background: #fff;
+}
+
+.main-navigation .nav-link {
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    transition: background .15s ease;
+}
+
+.main-navigation .nav-link:hover {
+    background: rgba(0, 0, 0, .04);
 }
