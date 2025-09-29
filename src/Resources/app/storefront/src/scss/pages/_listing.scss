@@ -1,0 +1,21 @@
+.listing {
+    --ft-grid-gap: 16px;
+}
+
+.listing .product-box {
+    height: 100%;
+}
+
+.card-body {
+    padding: $space-4;
+}
+
+.listing .cms-element-product-listing .row {
+    margin-left: calc(-1 * var(--ft-grid-gap));
+    margin-right: calc(-1 * var(--ft-grid-gap));
+}
+
+.listing .cms-element-product-listing [class*="col-"] {
+    padding-left: var(--ft-grid-gap);
+    padding-right: var(--ft-grid-gap);
+}
