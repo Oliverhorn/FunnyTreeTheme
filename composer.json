@@ -7,6 +7,12 @@
   "require": {
     "shopware/core": ">=6.7.0 <6.8.0"
   },
+  "authors": [
+    {
+      "name": "Funny Tree",
+      "homepage": "https://funnytree.de"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "FunnyTreeTheme\\": "src/"
