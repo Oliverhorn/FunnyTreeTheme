@@ -1,14 +1,31 @@
+/* ==========================================================================
+   TYPOGRAPHY
+   ==========================================================================
+   Enthält globale Typografie-Definitionen für FunnyTreeTheme
+   --------------------------------------------------------------------------
+   - Font & Body
+   - Headings (mit clamp für Responsive)
+   - Links
+   - Paragraphs, Lists, Small-Text
+   - Mobile Anpassungen
+   ==========================================================================
+*/
+
 body {
     font-family: $font-sans;
     color: $body-color;
 }
 
+/* Headings */
 h1,
 h2,
 h3,
 h4,
 h5 {
     letter-spacing: -.01em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 .5rem;
 }
 
 h1 {
@@ -23,10 +40,51 @@ h3 {
     font-size: clamp(1.25rem, 1.5vw, 1.375rem);
 }
 
+/* Links */
 a {
     text-decoration: none;
+    color: $accent;
+    /* definierte Akzentfarbe */
+    transition: color .3s ease;
 }
 
 a:hover {
     text-decoration: underline;
+    color: darken($accent, 10%);
+}
+
+/* Paragraphs & Lists */
+p,
+li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: $text-600;
+    margin: 0 0 1rem;
+}
+
+/* Kleine Texte */
+.small-text {
+    font-size: .875rem;
+    color: $text-500;
+}
+
+/* Mobile Anpassungen */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    h3 {
+        font-size: 1.125rem;
+    }
+
+    p,
+    li {
+        font-size: .95rem;
+        line-height: 1.5;
+    }
 }
