@@ -1,0 +1,77 @@
+/* ==========================================================================
+   CONTAINER / CMS-LAYOUT (EMZ-ähnlich, modernisiert)
+   - Seiten-Grau + weiße Boxed Sections
+   - keine doppelten Gutter: horizontale Abstände nur über den Main-Container
+   - Full-Width bleibt randlos
+   - Hero (1. Section) innen randlos, Box-Optik bleibt
+   ========================================================================== */
+
+/* ---- Design Tokens (falls nicht global definiert) ----------------------- */
+$container-max: var(--ft-container-max, 1400px);
+$gutter-desktop: 20px; // EMZ-Optik: Seiten-Gutter
+$gutter-mobile: 10px; // EMZ-Optik: Mobile-Gutter
+$space-6: 1.5rem; // Section-Abstand mobil
+$space-8: 2rem; // Section-Abstand Desktop
+$radius-base: 8px; // Karten-Radius
+$shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
+
+/* ---- 1) Hauptbereich / CMS-Wrapper ------------------------------------- */
+/* Nur HIER kommen horizontale Gutter her, um doppelte Abstände zu vermeiden. */
+.content-main,
+.cms-page {
+    max-width: $container-max;
+    margin-inline: auto;
+    padding-inline: $gutter-desktop;
+}
+
+@media (max-width: 768px) {
+
+    .content-main,
+    .cms-page {
+        padding-inline: $gutter-mobile;
+    }
+}
+
+/* ---- 2) Section-Boxen (weiße Karten) ----------------------------------- */
+/* Wir geben NUR vertikales Padding auf die Section. Horizontal kommt vom Main. */
+.cms-section:not(.cms-section--full-width) {
+    max-width: $container-max;
+    margin-inline: auto;
+    background: #fff;
+    border-radius: $radius-base;
+    box-shadow: $shadow-card;
+    padding-block: 40px;
+    /* vertikal wie EMZ */
+    /* KEIN padding-inline hier -> sonst doppelter Gutter! */
+}
+
+/* Vertikaler Abstand zwischen Sections */
+.cms-section {
+    margin-bottom: $space-8;
+}
+
+@media (max-width: 768px) {
+    .cms-section {
+        margin-bottom: $space-6;
+    }
+}
+
+/* ---- 3) Innere Wrapper neutralisieren ---------------------------------- */
+/* Verhindert zusätzliche Gutter innerhalb der Section. */
+.cms-section__container,
+.cms-section-container,
+.cms-section .container {
+    max-width: $container-max;
+    margin-inline: auto;
+    padding-inline: 0;
+    /* wichtig: keine doppelten Gutter */
+}
+
+/* ---- 4) Blöcke: runde Ecken + sauberes Clipping ------------------------ */
+.cms-block {
+    border-radius: $radius-base;
+    overflow: hidden;
+    /* Bilder/Slider sauber innerhalb des Radius */
+    /* Block-Padding NICHT global setzen, um den Hero später randlos zu bekommen.
+     (EMZ setzt padding am Block; wir machen’s gezielt nur, wo nötig) */
+}
