@@ -1,49 +1,97 @@
-// Entferne den Schatten aus den Blöcken
-.cms-block {
-    padding: 20px; // Standard-Padding für größere Bildschirme
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: none; // Schatten entfernen
+/* ==========================================================================
+   CONTAINER / CMS-LAYOUT (FunnyTree, modernisiert nach EMZ)
+   - Seitenhintergrund grau, Content-Sections als weiße Boxen
+   - Keine doppelten Gutter: horizontale Abstände nur vom Main-Container
+   - Erste Section (Hero): Bild/Slider randlos mit runden Ecken
+   ========================================================================== */
 
-    // Kleineres Padding für mobile Ansichten
+/* ---- Design Tokens (falls nicht global definiert) ----------------------- */
+$container-max: var(--ft-container-max, 1400px);
+$gutter-desktop: 20px;
+$gutter-mobile: 10px;
+$space-6: 1.5rem; // Abstände mobil
+$space-8: 2rem; // Abstände Desktop
+$radius-base: var(--ft-base-radius, 12px);
+$shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
+
+/* ---- 1) Haupt-Wrapper --------------------------------------------------- */
+.content-main,
+.cms-page {
+    max-width: $container-max;
+    margin-inline: auto;
+    padding-inline: $gutter-desktop;
+
     @media (max-width: 768px) {
-        padding: 15px 0px; // Geringeres Padding, nur auf Mobilgeräten
+        padding-inline: $gutter-mobile;
     }
 }
 
+/* ---- 2) Normale Sections (weiße Boxen) ---------------------------------- */
+.cms-section:not(.cms-section--full-width) {
+    max-width: $container-max;
+    margin-inline: auto;
+    background: #fff;
+    border-radius: $radius-base;
+    box-shadow: $shadow-card;
+    padding-block: 40px;
+    /* nur vertikales Padding */
+}
+
+/* Vertikale Abstände zwischen Sections */
 .cms-section {
-    max-width: 1400px; // Standardbreite für große Bildschirme
-    padding: 40px 20px;
-    margin: 20px auto;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
-    background-color: #fff;
-
-
-    // Für Bildschirme zwischen 1200px und 1400px
-    @media (min-width: 1201px) and (max-width: 1400px) {
-        max-width: 98%; // Leichter Rand links und rechts
-        padding: 40px 20px;
-    }
-
-    // Kleinere Bildschirme
-    @media (max-width: 1200px) {
-        max-width: 98%; // Leichter Rand links und rechts
-    }
+    margin-bottom: $space-8;
 
     @media (max-width: 768px) {
-        max-width: 95%; // Breite in mobiler Ansicht fast bis zum Rand
-        padding: 10px 10px; // Reduziertes Padding innerhalb der Sektionen für mobile Endgeräte
-    }
-
-    // Für Bildschirme über 1400px
-    @media (min-width: 1401px) {
-        max-width: 1400px; // Begrenzt die Breite auf 1400px
+        margin-bottom: $space-6;
     }
 }
 
-/* Erste Section (Hero) ohne seitliches Padding */
-.cms-page>.cms-section:first-child {
-    padding-left: -20px;
-    padding-right: 0 !important;
+/* ---- 3) Innere Wrapper neutralisieren ---------------------------------- */
+/* verhindert doppelte Abstände */
+.cms-section__container,
+.cms-section-container,
+.cms-section .container,
+.cms-block-container {
+    max-width: $container-max;
+    margin-inline: auto;
+    padding: 0;
+}
+
+/* ---- 4) CMS-Blöcke ------------------------------------------------------ */
+.cms-block {
+    border-radius: $radius-base;
+    overflow: hidden;
+    /* Bilder/Slider clippen an runden Ecken */
+    padding: 0;
+    /* Standardmäßig kein Padding */
+    margin: 0;
+    box-shadow: none;
+}
+
+/* ---- 5) Hero (erste Section) -------------------------------------------- */
+/* Box behält Shadow & Radius, Inhalt füllt randlos */
+.cms-section:first-child {
+    padding: 0 !important;
+    /* keine Innenabstände */
+    overflow: hidden;
+    /* Clipping für runde Ecken */
+}
+
+.cms-section:first-child .cms-block,
+.cms-section:first-child .cms-block-container,
+.cms-section:first-child .cms-element-image-slider,
+.cms-section:first-child .cms-element-image,
+.cms-section:first-child .image-slider,
+.cms-section:first-child .image-slider-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent;
+    box-shadow: none;
+}
+
+.cms-section:first-child img.image-slider-image,
+.cms-section:first-child .cms-image img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
