@@ -135,3 +135,635 @@
         opacity: 1;
     }
 }
+
+
+
+// Grundlegende Stile für die gesamte Seite
+
+body {
+    color: #333;
+    background-color: #f8f9fa;
+
+}
+
+// Links und Hover-Effekte
+
+a {
+    color: #17a2b8;
+    /* Neues Türkis für Links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #117a8b;
+    /* Etwas dunkleres Türkis beim Hover */
+}
+
+// Hero-Bereich
+
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f5f5f5;
+}
+
+.hero-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subheading {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 1rem 0;
+}
+
+.highlight {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero img {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+}
+
+// Trennlinie im Hero-Bereich
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 1.5rem auto;
+    border: none;
+}
+
+// Button-Styling nur für den Hero-Bereich
+
+.hero .btn {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #17a2b8;
+    /* Türkis als Grundfarbe für den Button */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.hero .btn:hover {
+    background-color: #117a8b;
+    /* Etwas dunkler für den Hover-Effekt */
+}
+
+// Typografie für den Hauptinhalt der Seite (außerhalb des Hero-Bereichs)
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 0 0 1rem;
+}
+
+li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+
+
+}
+
+// Haupt- und Unterüberschriften
+
+h1 {
+    font-size: 2.2rem; // Hauptüberschrift
+}
+
+h2 {
+    font-size: 1.8rem; // Unterüberschrift
+}
+
+h3 {
+    font-size: 1.5rem; // Weitere Unterteilung
+}
+
+h4 {
+    font-size: 1.3rem; // Kleinere Überschrift
+}
+
+// Weitere Textstile
+
+.small-text {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+// Absatzstil für den Hauptinhalt
+
+.main-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+// Listenelemente für eine klare Struktur
+
+ul,
+ol {
+    font-size: 1rem;
+    line-height: 1.6;
+    //margin-left: 1.5rem;
+}
+
+// Blog-Bild-Styling
+
+
+.col-12.col-md-4.col-lg-3 .blog-image {
+    /* Stile für das Bild im ersten Container */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    /* Vertikale und horizontale Zentrierung */
+    border-radius: 8px;
+}
+
+.col-12 .blog-card .blog-image {
+    /* Stile für das Bild im zweiten Container */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+//.blog-image {
+//    width: 100%;
+//    height: 200px;
+//    object-fit: cover;
+//    border-radius: 8px;
+/* Rundung direkt am Bild */
+//}
+
+// Mobile Anpassungen für Hero und Text
+
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: 2rem;
+        /* Leicht größere Überschrift für bessere Lesbarkeit */
+        margin-bottom: 0.4rem;
+    }
+
+    .hero-subheading {
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-content p,
+    .note {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .highlight {
+        font-size: 1.1rem;
+        margin-top: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero .btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+    }
+
+    // Anpassungen für den Hauptinhalt auf Mobilgeräten
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    p,
+    li {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+// Blog-Karten Einstellungen für Bildschirmbreiten größer 1250px
+@media (min-width: 1251px) {
+    .blog-card .blog-title {
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #333;
+        height: 100px;
+        /* Beschränkt den Titel auf 4 Zeilen */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-card .card-text {
+        font-size: 1rem; // Gleiche Schriftgröße wie bei größeren Bildschirmen
+        line-height: 1.3;
+        color: #555;
+        overflow: hidden;
+        height: 190px; // Höhe anpassen
+        text-overflow: ellipsis;
+
+        -webkit-box-orient: vertical;
+    }
+}
+
+// Blog-Karten Einstellungen für Bildschirmbreiten kleiner 1250px
+@media (max-width: 1250px) {
+    .blog-card .blog-title {
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #333;
+        height: 190px;
+        /* Beschränkt den Titel auf 4 Zeilen */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-card .card-text {
+        font-size: 0.9rem;
+        line-height: 1.3;
+        color: #555;
+        overflow: hidden;
+        height: 190px; // Höhe anpassen
+        text-overflow: ellipsis;
+
+        -webkit-box-orient: vertical;
+    }
+}
+
+
+// Blog-Karten Einstellungen für Bildschirmbreiten kleiner 768px
+@media (max-width: 768px) {
+    .blog-card .blog-title {
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #333;
+        height: 85px;
+        /* Beschränkt den Titel auf 4 Zeilen */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-card .card-text {
+        font-size: 0.9rem;
+        line-height: 1.3;
+        color: #555;
+        overflow: hidden;
+        height: 110px; // Höhe auf 100px für mobile Ansicht
+        text-overflow: ellipsis;
+
+        -webkit-box-orient: vertical;
+    }
+}
+
+
+// Blog-Cards Container Styling
+.blog-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Einheitliche Höhe für Blog-Cards */
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    /* gleiche Höhe für jede Card */
+    min-height: 320px;
+    /* Mindesthöhe einstellen, je nach Designvorlage */
+    background-color: #fff;
+    /* Hintergrundfarbe */
+    border-radius: 8px;
+    /* für eine moderne Optik */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* leichte Schatten für visuelle Tiefe */
+}
+
+/* Card Body: Flexibles Layout mit optischem Ausblendeffekt */
+.blog-card .card-body {
+    position: relative;
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Inhalt wird innerhalb der Card gehalten */
+}
+
+/* Gradient Overlay für das Ausblenden des Textes */
+.blog-card .card-body::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    /* Höhe des Verlaufsbereichs */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+    /* Hierbei passt sich der Hintergrund am besten an die Card-Farbe an */
+    pointer-events: none;
+    /* Verhindert, dass der Gradient den Text blockiert */
+}
+
+/* Einheitliche Footer-Höhe */
+.blog-card .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+    /* Footer bleibt unten */
+}
+
+/* Autoren-Avatar und Name Styling */
+.blog-author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.blog-author-display-name {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+
+/* Zentrierte H2-Überschrift */
+.article-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Container für den gesamten Artikelbereich */
+.article-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    /* Beibehaltung des ursprünglichen Paddings */
+}
+
+/* Styling für jede Frage-Antwort-Sektion */
+.article-section {
+    margin-bottom: 20px;
+    padding: 0 15px;
+    /* Horizontales Padding hinzufügen für besseren Platz */
+}
+
+/* Überschriftenstil */
+.article-section h3 {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
+    line-height: 1.3;
+}
+
+/* Antworttext-Styling */
+.article-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    /* Blockmäßige Ausrichtung */
+    color: #555;
+    margin: 0 0 1rem 0;
+    hyphens: auto;
+    /* Silbentrennung aktivieren */
+    overflow-wrap: break-word;
+    /* Worttrennung aktivieren, um Überlauf zu vermeiden */
+}
+
+.article-section li {
+    margin-bottom: 1rem;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 768px) {
+    .article-section {
+        padding: 0 10px;
+        /* Reduziertes Padding für Mobilgeräte */
+    }
+
+    .article-section h3 {
+        font-size: 1.3rem;
+        /* Kleinere Schriftgröße für Mobilgeräte */
+    }
+
+    .article-section p {
+        font-size: 0.95rem;
+        /* Kleinere Schriftgröße für Mobilgeräte */
+        line-height: 1.5;
+        /* Engerer Zeilenabstand */
+    }
+}
+
+// Produktbox-Grundstruktur
+.product-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    /* Sanfte Abrundung für modernen Look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtiler Schatten */
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* Sanfte Übergänge */
+}
+
+/* Hover-Effekt für Tiefe und Interaktivität */
+@media (min-width: 768px) {
+    .product-box:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        /* Schatten intensivieren */
+        transform: translateY(-5px);
+        /* Leichtes Anheben */
+    }
+}
+
+/* Produktbild mit Overlay-Effekt */
+.product-box img {
+    //width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    /* Sanfter Übergang */
+}
+
+.product-box:hover img {
+    opacity: 0.9;
+    /* Leicht abgedunkeltes Bild bei Hover */
+}
+
+/* Overlay bei Hover mit Produktinformationen */
+.product-box .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Transparente Überlagerung */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.product-box:hover .overlay {
+    opacity: 1;
+    /* Zeigt das Overlay bei Hover */
+}
+
+/* Produktname und Preis im Overlay */
+.product-box .overlay .product-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-box .overlay .product-price {
+    font-size: 1rem;
+}
+
+/* Textformatierung innerhalb der Produktbox */
+.product-box .product-name {
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.product-box .product-price {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+}
+
+/* Responsive Anpassungen für Mobilgeräte */
+@media (max-width: 768px) {
+    .product-box {
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* Kleinere Schatten bei mobilen Geräten */
+    }
+
+    .product-box .product-name {
+        font-size: 1rem;
+    }
+
+    .product-box .product-price {
+        font-size: 0.9rem;
+    }
+
+    .product-box img {
+        border-radius: 6px;
+        /* Kleinere Abrundung für mobile Ansicht */
+    }
+}
+
+/* Produktslider ohne sichtbaren Rahmen */
+.product-slider.has-border {
+    border: none;
+    /* Entfernt den äußeren Rahmen */
+    border-radius: 0;
+    overflow: hidden;
+}
+
+/* Button in der Produktbox */
+.product-box .btn-detail {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #17a2b8;
+    /* Primärfarbe für einen modernen Look */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Leichter Schatten für mehr Tiefe */
+}
+
+.product-box .btn-detail:hover {
+    background-color: #117a8b;
+    /* Leicht dunkleres Türkis beim Hover */
+    transform: translateY(-2px);
+    /* Leichtes Anheben für den Hover-Effekt */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Intensiverer Schatten */
+}
+
+/* Responsive Anpassung für mobile Ansicht */
+@media (max-width: 768px) {
+    .product-box .btn-detail {
+        font-size: 0.9rem;
+        /* Kleinere Schriftgröße für mobile Ansicht */
+        padding: 8px;
+    }
+}
