@@ -1,0 +1,12 @@
+// Entferne den Schatten aus den Blöcken
+.cms-block {
+    padding: 20px; // Standard-Padding für größere Bildschirme
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: none; // Schatten entfernen
+
+    // Kleineres Padding für mobile Ansichten
+    @media (max-width: 768px) {
+        padding: 15px 0px; // Geringeres Padding, nur auf Mobilgeräten
+    }
+}
