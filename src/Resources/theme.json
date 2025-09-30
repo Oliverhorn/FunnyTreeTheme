@@ -45,16 +45,6 @@
         "type": "fontFamily",
         "value": "Poppins, Inter, system-ui, Arial, sans-serif",
         "tab": "typography"
-      },
-      "ft-base-radius": {
-        "type": "text",
-        "value": "12px",
-        "tab": "design"
-      },
-      "ft-container-max": {
-        "type": "text",
-        "value": "1320px",
-        "tab": "layout"
       }
     }
   }
