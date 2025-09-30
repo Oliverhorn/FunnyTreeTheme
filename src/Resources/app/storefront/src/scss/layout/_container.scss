@@ -13,7 +13,7 @@
 
 .cms-section {
     max-width: 1400px; // Standardbreite für große Bildschirme
-    padding: 40px 0;
+    padding: 40px 20px;
     margin: 20px auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
@@ -44,6 +44,6 @@
 
 /* Erste Section (Hero) ohne seitliches Padding */
 .cms-page>.cms-section:first-child {
-    padding-left: 0 !important;
+    padding-left: -20px;
     padding-right: 0 !important;
 }
