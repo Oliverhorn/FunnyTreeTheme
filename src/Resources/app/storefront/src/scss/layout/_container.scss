@@ -2,7 +2,7 @@
    CONTAINER / CMS-LAYOUT (FunnyTree, modernisiert nach EMZ)
    - Seitenhintergrund grau, Content-Sections als weiße Boxen
    - Keine doppelten Gutter: horizontale Abstände nur vom Main-Container
-   - Erste Section (Hero): Bild/Slider randlos mit runden Ecken
+   - Hero (erste Section) randlos → Bild/Slider füllt Box mit Radius
    ========================================================================== */
 
 /* ---- Design Tokens (falls nicht global definiert) ----------------------- */
@@ -47,7 +47,6 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
 }
 
 /* ---- 3) Innere Wrapper neutralisieren ---------------------------------- */
-/* verhindert doppelte Abstände */
 .cms-section__container,
 .cms-section-container,
 .cms-section .container,
@@ -63,34 +62,68 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
     overflow: hidden;
     /* Bilder/Slider clippen an runden Ecken */
     padding: 0;
-    /* Standardmäßig kein Padding */
     margin: 0;
     box-shadow: none;
 }
 
-/* ---- 5) Hero (erste Section) -------------------------------------------- */
-/* Box behält Shadow & Radius, Inhalt füllt randlos */
-.cms-section:first-child {
-    padding: 0 !important;
-    /* keine Innenabstände */
-    overflow: hidden;
-    /* Clipping für runde Ecken */
+/* ==========================================================================
+   HERO-SPECIAL: .cms-section-default.full-width:first-child
+   → Bild/Slider randlos in der weißen Box mit Radius & Shadow
+   ========================================================================== */
+
+/* Root-Gutter (als CSS-Variablen für negative Margins) */
+:root {
+    --ft-gutter-desktop: 20px;
+    --ft-gutter-mobile: 10px;
 }
 
-.cms-section:first-child .cms-block,
-.cms-section:first-child .cms-block-container,
-.cms-section:first-child .cms-element-image-slider,
-.cms-section:first-child .cms-element-image,
-.cms-section:first-child .image-slider,
-.cms-section:first-child .image-slider-container {
+/* 1) Hero-Section selbst */
+:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child {
+    margin-left: calc(-1 * var(--ft-gutter-desktop));
+    margin-right: calc(-1 * var(--ft-gutter-desktop));
+
+    @media (max-width: 768px) {
+        margin-left: calc(-1 * var(--ft-gutter-mobile));
+        margin-right: calc(-1 * var(--ft-gutter-mobile));
+    }
+
+    background: #fff;
+    border-radius: var(--ft-base-radius, 12px);
+    box-shadow: $shadow-card;
+
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+/* 2) Innere Wrapper im Hero */
+:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child :is(.cms-section__container, .cms-section-container, .container, .cms-block-container) {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none;
+}
+
+/* 3) Blöcke im Hero */
+:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child .cms-block {
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+/* 4) Slider-/Bild-Wrapper */
+:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child :is(.cms-element-image-slider, .cms-element-image,
+    .image-slider, .image-slider-container,
+    .base-slider, .base-slider-container,
+    .image-slider-item, .image-slider-item-container) {
     padding: 0 !important;
     margin: 0 !important;
     background: transparent;
     box-shadow: none;
 }
 
-.cms-section:first-child img.image-slider-image,
-.cms-section:first-child .cms-image img {
+/* 5) Bild selbst */
+:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child img {
     display: block;
     width: 100%;
     height: auto;
