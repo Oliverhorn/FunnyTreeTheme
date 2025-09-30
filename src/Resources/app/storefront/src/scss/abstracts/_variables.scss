@@ -1,52 +1,35 @@
 /* ==========================================================================
    VARIABLES (Design Tokens)
    - Zentrale Stelle für alle Designwerte
-   - Kombination aus fixen SCSS-Defaults + CSS-Variablen im :root
+   - Trennung: Fixe Werte vs. Admin-Felder vs. SCSS-Tokens
    ========================================================================== */
 
-/* ---- Root-Level: Globale Design-CSS-Variablen ---- */
-/* Diese Werte sind nicht mehr im Admin, sollen aber als CSS-Token verfügbar sein */
+/* --------------------------------------------------------------------------
+   1) FIXE WERTE (nur SCSS, nicht im Admin)
+   -------------------------------------------------------------------------- */
+
+/* Root-Level Variablen (fixe Designwerte, manuell gepflegt) */
 :root {
     --ft-base-radius: 12px;
     --ft-container-max: 1400px;
-    --ft-shadow-md: 0 8px 24px rgba(0, 0, 0, .08);
+    --ft-shadow-md: 0 8px 24px rgba(0, 0, .08);
     --ft-page-bg: #f8f9fa;
 }
 
-/* ---- Colors: statische Basiswerte ---- */
-$brand-primary-static: #16a34a; // Grün
-$brand-secondary-static: #0ea5e9; // Cyan/Blau
-$accent-static: #f97316; // Orange Akzent
+/* Fallback-Werte für SCSS-Berechnungen */
+$radius-base-static: 12px;
+$container-max-static: 1400px;
+$shadow-md-static: 0 8px 24px rgba(0, 0, .08);
 
-/* ---- Colors: abgeleitete Hover-Farben ---- */
-$brand-primary-hover: mix($brand-primary-static, #000, 6%);
-$accent-hover: mix($accent-static, #000, 12%);
-
-/* ---- Colors: runtime (Admin oder Root mit Fallback) ---- */
-$brand-primary: var(--sw-color-brand-primary, #{$brand-primary-static});
-$brand-secondary: var(--sw-color-brand-secondary, #{$brand-secondary-static});
-$accent: var(--ft-color-accent, #{$accent-static});
-$page-bg: var(--ft-page-bg, #f8f9fa);
-
-/* ---- Textfarben ---- */
+$page-bg-static: #f8f9fa; // Seiten-Hintergrund
 $text-900: #0f172a; // Body
 $text-700: #333333; // Headlines / starke Texte
 $text-600: #555555; // Fließtext muted
 $text-500: #666666; // Subtle / small
 
-/* ---- Typography ---- */
 $font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
-/* ---- Radii, Container, Shadows ---- */
-$radius-base-static: 12px;
-$container-max-static: 1400px;
-$shadow-md-static: 0 8px 24px rgba(0, 0, 0, .08);
-
-$radius-base: var(--ft-base-radius, #{$radius-base-static});
-$container-max: var(--ft-container-max, #{$container-max-static});
-$shadow-md: var(--ft-shadow-md, #{$shadow-md-static});
-
-/* ---- Spacing Scale ---- */
+/* Spacing Scale */
 $space-1: .25rem;
 $space-2: .5rem;
 $space-3: .75rem;
@@ -55,3 +38,38 @@ $space-5: 1.25rem;
 $space-6: 1.5rem;
 $space-8: 2rem;
 $space-10: 2.5rem;
+
+/* --------------------------------------------------------------------------
+   2) ADMIN-WERTE (kommen aus theme.json → Shopware schreibt CSS-Variablen)
+   -------------------------------------------------------------------------- */
+/* Beispiel: 
+   :root {
+     --sw-color-brand-primary: #16a34a;
+     --sw-color-brand-secondary: #0ea5e9;
+     --ft-color-accent: #f97316;
+   }
+*/
+
+$brand-primary-static: #16a34a; // Grün (Fallback)
+$brand-secondary-static: #0ea5e9; // Cyan/Blau (Fallback)
+$accent-static: #f97316; // Orange Akzent (Fallback)
+
+/* --------------------------------------------------------------------------
+   3) SCSS-TOKENS (nutzen Admin-Variablen, mit Fallback auf statische Werte)
+   -------------------------------------------------------------------------- */
+
+$brand-primary: var(--sw-color-brand-primary, #{$brand-primary-static});
+$brand-secondary: var(--sw-color-brand-secondary, #{$brand-secondary-static});
+$accent: var(--ft-color-accent, #{$accent-static});
+
+$page-bg: var(--ft-page-bg, #{$page-bg-static});
+$radius-base: var(--ft-base-radius, #{$radius-base-static});
+$container-max: var(--ft-container-max, #{$container-max-static});
+$shadow-md: var(--ft-shadow-md, #{$shadow-md-static});
+
+/* --------------------------------------------------------------------------
+   4) ABGELEITETE WERTE (berechnet aus obigen Tokens)
+   -------------------------------------------------------------------------- */
+
+$brand-primary-hover: mix($brand-primary-static, #000, 6%);
+$accent-hover: mix($accent-static, #000, 12%);
