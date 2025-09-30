@@ -1,6 +1,13 @@
+@import "layout/header";
+@import "layout/nav";
+@import "layout/navigation-offcanvas";
+@import "layout/footer";
+
+// CMS Block- und Struktur-Styling
+
 // Entferne den Schatten aus den Blöcken
 .cms-block {
-    padding: 0 !important; // Standard-Padding für größere Bildschirme
+    padding: 20px; // Standard-Padding für größere Bildschirme
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: none; // Schatten entfernen
@@ -11,9 +18,19 @@
     }
 }
 
+.cms-block h2,
+.cms-block h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600; // Deutliche Schrift für mehr Präsenz
+    color: #333;
+}
+
+// CMS Section-Styling
+
 .cms-section {
     max-width: 1400px; // Standardbreite für große Bildschirme
-    padding: 0 !important;
+    padding: 40px 20px;
     margin: 20px auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
@@ -38,5 +55,88 @@
     // Für Bildschirme über 1400px
     @media (min-width: 1401px) {
         max-width: 1400px; // Begrenzt die Breite auf 1400px
+    }
+}
+
+// Mobile Schriftgrößen und Abstände in CMS Blöcken
+
+@media (max-width: 768px) {
+
+    .cms-block h2,
+    .cms-block h3 {
+        font-size: 1.5rem; // Kleinere Schriftgröße für Titel in der mobilen Ansicht
+        margin-bottom: 0.8rem;
+    }
+
+    .cms-block p {
+        font-size: 0.9rem; // Kleinere Schriftgröße für mobilen Fließtext
+        line-height: 1.4; // Engerer Zeilenabstand für mehr Kompaktheit
+    }
+
+    .cms-block {
+        margin-bottom: 15px; // Zusätzlicher Abstand zwischen Blöcken für eine klare Trennung
+    }
+
+    .cms-section {
+        padding: 10px 10px; // Reduziertes Padding innerhalb der Sektionen für mobile Endgeräte
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Spezifisches Styling für den Produkt-Slider */
+    .cms-section .product-slider,
+    .cms-section .product-slider .product-slider-container {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Slider-Items korrekt ausrichten */
+    .product-slider-item {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+// Videoeinstellungen
+.cms-html-video-container.is-standard video {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: auto;
+}
+
+.cms-html-video-container.is-stretch {
+    /* Zentriert das Video und begrenzt die maximale Breite */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+
+    /* Rundungen und Schatten für ein modernes Design */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cms-html-video-container.is-stretch video {
+    /* Skalierung und Anpassung für unterschiedliche Bildschirme */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    /* Weiches Einblenden für das Video */
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Einblendanimation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
