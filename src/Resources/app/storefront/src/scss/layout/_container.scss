@@ -19,6 +19,7 @@
     border-radius: 6px;
     background-color: #fff;
 
+
     // Für Bildschirme zwischen 1200px und 1400px
     @media (min-width: 1201px) and (max-width: 1400px) {
         max-width: 98%; // Leichter Rand links und rechts
@@ -39,4 +40,10 @@
     @media (min-width: 1401px) {
         max-width: 1400px; // Begrenzt die Breite auf 1400px
     }
+}
+
+/* Erste Section (Hero) ohne seitliches Padding */
+.cms-page>.cms-section:first-child {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
