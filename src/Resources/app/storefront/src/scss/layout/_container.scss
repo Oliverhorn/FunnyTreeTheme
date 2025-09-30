@@ -40,3 +40,57 @@
         max-width: 1400px; // Begrenzt die Breite auf 1400px
     }
 }
+
+/* =========================================================
+   HERO (nur 1. Section): innen komplett randlos,
+   Box-Optik (weiß + Radius + Shadow) bleibt erhalten
+   ========================================================= */
+
+/* 1) Section-Padding (oben/unten + links/rechts) deaktivieren */
+:where(.cms-page, .content-main)>.cms-section:first-child:not(.cms-section--full-width) {
+    padding: 0 !important;
+    /* überschreibt z.B. 40px 20px / 10px 10px */
+}
+
+/* 2) Gutter der inneren Wrapper entfernen */
+:where(.cms-page, .content-main)>.cms-section:first-child :is(.cms-section__container, .cms-section-container, .container) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* 3) Block-Container hat in Shopware häufig 20px vertical → aus */
+:where(.cms-page, .content-main)>.cms-section:first-child .cms-block-container {
+    padding: 0 !important;
+}
+
+/* 4) Block selbst: Padding/Margins aus, Radius/Clipping bleiben (global) */
+:where(.cms-page, .content-main)>.cms-section:first-child .cms-block {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 5) Häufige Element-/Plugin-Paddings im Hero neutralisieren */
+:where(.cms-page, .content-main)>.cms-section:first-child :is(.cms-element, .cms-element-image, .cms-element-image-slider,
+    .image-slider, .image-slider-container, .base-slider, .base-slider-container,
+    .cms-element-container, .emz-image-container) {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none;
+    /* nur falls ein Plugin hier Schatten setzt */
+    background: inherit;
+    /* Box bleibt weiß wie die Section */
+}
+
+/* 6) Bilder wirklich bündig machen */
+:where(.cms-page, .content-main)>.cms-section:first-child img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 7) (Optional) Mobile: Abstand unter dem Hero reduzieren/entfernen */
+@media (max-width: 768px) {
+    :where(.cms-page, .content-main)>.cms-section:first-child {
+        margin-bottom: 0 !important;
+    }
+}
