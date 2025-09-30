@@ -2,10 +2,10 @@
    CONTAINER / CMS-LAYOUT (FunnyTree, modernisiert nach EMZ)
    - Seitenhintergrund grau, Content-Sections als weiße Boxen
    - Keine doppelten Gutter: horizontale Abstände nur vom Main-Container
-   - Hero (erste Section) randlos → Bild/Slider füllt Box mit Radius
+   - Hero (erste Section mit Slider) randlos → Bild/Slider füllt Box mit Radius
    ========================================================================== */
 
-/* ---- Design Tokens (falls nicht global definiert) ----------------------- */
+/* ---- Design Tokens ------------------------------------------------------ */
 $container-max: var(--ft-container-max, 1400px);
 $gutter-desktop: 20px;
 $gutter-mobile: 10px;
@@ -67,69 +67,56 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
 }
 
 /* ==========================================================================
-   HERO-SPECIAL: .cms-section-default.full-width:first-child
+   HERO-SPECIAL: .cms-section-default.full-width (erste Section mit Slider)
    → Bild/Slider randlos in der weißen Box mit Radius & Shadow
    ========================================================================== */
 
-/* Root-Gutter (als CSS-Variablen für negative Margins / optional) */
-:root {
-    --ft-gutter-desktop: 20px;
-    --ft-gutter-mobile: 10px;
-}
+/* Optional: nur Sections mit Image-Slider gezielt stylen */
+@supports selector(:has(*)) {
+    .cms-section-default.full-width:has(.cms-element-image-slider) {
+        max-width: $container-max !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
 
-/* 1) Hero-Section selbst */
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child {
-    /* über globalen Seiten-Gutter ziehen, falls vorhanden */
-    margin-left: calc(-1 * var(--ft-gutter-desktop));
-    margin-right: calc(-1 * var(--ft-gutter-desktop));
+        background: #fff !important;
+        border-radius: $radius-base !important;
+        box-shadow: $shadow-card !important;
 
-    @media (max-width: 768px) {
-        margin-left: calc(-1 * var(--ft-gutter-mobile));
-        margin-right: calc(-1 * var(--ft-gutter-mobile));
+        padding: 0 !important;
+        overflow: hidden !important;
     }
-
-    /* Box-Optik an der Section selbst */
-    background: #fff;
-    border-radius: var(--ft-base-radius, 12px);
-    box-shadow: $shadow-card;
-
-    /* innen randlos + Clipping für runde Ecken */
-    padding: 0 !important;
-    overflow: hidden;
 }
 
-/* 2) Innere Wrapper im Hero */
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child :is(.cms-section__container, .cms-section-container, .container, .cms-block-container) {
+/* Fallback für alle Full-Width-Sections */
+.cms-section-default.full-width {
+    background: #fff !important;
+    border-radius: $radius-base !important;
+    box-shadow: $shadow-card !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Innere Wrapper randlos */
+.cms-section-default.full-width :is(.cms-section__container, .cms-section-container, .container, .cms-block-container) {
     padding: 0 !important;
     margin: 0 !important;
     max-width: none !important;
-    /* keine unerwartete Begrenzung */
 }
 
-/* 2b) Bootstrap-Gutter im Hero entfernen (Row/Col) */
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child :is(.row, .cms-row) {
+/* Bootstrap-Gutter killen */
+.cms-section-default.full-width :is(.row, .cms-row) {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
 
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child [class^="col-"],
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child [class*=" col-"] {
+.cms-section-default.full-width :is(.col, [class^="col-"], [class*=" col-"]) {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
 
-/* 3) Blöcke im Hero (Radius kommt von der Section) */
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child .cms-block {
-    padding: 0 !important;
-    margin: 0 !important;
-    border-radius: 0;
-    /* Section hat den Radius */
-    box-shadow: none;
-    background: transparent;
-}
-
-/* 4) Slider-/Bild-Wrapper bündig halten */
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child :is(.cms-element-image-slider, .cms-element-image,
+/* Blöcke & Slider-Wrapper randlos */
+.cms-section-default.full-width :is(.cms-block,
+    .cms-element-image-slider, .cms-element-image,
     .base-slider, .base-slider-container,
     .image-slider, .image-slider-container,
     .image-slider-item, .image-slider-item-container,
@@ -138,12 +125,13 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
     margin: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
+    border-radius: 0 !important;
+    /* Radius liegt an der Section */
 }
 
-/* 5) Bild selbst füllt die Box */
-:where(.cms-page, .content-main)>.cms-section-default.full-width:first-child img {
-    display: block;
-    width: 100%;
-    height: auto;
-    /* bei fixer Höhe: height: 100%; object-fit: cover; */
+/* Bilder bündig einpassen */
+.cms-section-default.full-width img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
 }
