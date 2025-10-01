@@ -1,160 +1,43 @@
-/* ==========================================================================
-   CONTAINER / CMS-LAYOUT (FunnyTree, modernisiert nach EMZ)
-   - Seitenhintergrund grau, Content-Sections als weiße Boxen
-   - Keine doppelten Gutter: horizontale Abstände nur vom Main-Container
-   - Hero (erste Section) randlos → Bild/Slider füllt Box mit Radius
-   ========================================================================== */
-
-/* ---- Design Tokens (falls nicht global definiert) ----------------------- */
-$container-max: var(--ft-container-max, 1400px);
-$gutter-desktop: 20px;
-$gutter-mobile: 10px;
-$space-6: 1.5rem; // Abstände mobil
-$space-8: 2rem; // Abstände Desktop
-$radius-base: var(--ft-base-radius, 12px);
-$shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
-
-/* ---- 1) Haupt-Wrapper --------------------------------------------------- */
-.content-main,
-.cms-page {
-    max-width: $container-max;
-    margin-inline: auto;
-    padding-inline: $gutter-desktop;
-
-    @media (max-width: 768px) {
-        padding-inline: $gutter-mobile;
-    }
-}
-
-/* ---- 2) Normale Sections (weiße Boxen) ---------------------------------- */
-/* Boxed-Sections: weiße Karte mit vertikalem Innenabstand */
-.cms-section:not(.cms-section--full-width) {
-    max-width: $container-max;
-    margin-inline: auto;
-    background: #fff;
-    border-radius: $radius-base;
-    box-shadow: $shadow-card;
-    padding-block: 40px;
-    /* nur vertikal */
-}
-
-/* Vollbreite-Sections: Standardmäßig KEIN Innenpadding erzwingen
-   (lassen wir von Erlebniswelten/Element steuern) */
-
-/* Vertikale Abstände zwischen ALLEN Sections beibehalten */
-.cms-section {
-    margin-bottom: $space-8;
-
-    @media (max-width: 768px) {
-        margin-bottom: $space-6;
-    }
-}
-
-/* ---- 3) Innere Wrapper neutralisieren (kein doppelter Gutter) ----------- */
-.cms-section__container,
-.cms-section-container,
-.cms-section .container,
-.cms-block-container {
-    max-width: $container-max;
-    margin-inline: auto;
-    padding: 0;
-}
-
-/* ---- 4) CMS-Blöcke ------------------------------------------------------ */
+// Entferne den Schatten aus den Blöcken
 .cms-block {
-    border-radius: $radius-base;
-    overflow: hidden;
-    /* Bilder/Slider clippen an runden Ecken */
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
+    padding: 20px; // Standard-Padding für größere Bildschirme
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: none; // Schatten entfernen
+
+    // Kleineres Padding für mobile Ansichten
+    @media (max-width: 768px) {
+        padding: 15px 0px; // Geringeres Padding, nur auf Mobilgeräten
+    }
 }
 
-/* ==========================================================================
-   HERO-SPECIAL (NUR die erste Section):
-   .cms-section-default.full-width ODER .cms-section
-   → Bild/Slider füllt die weiße Box bündig, Ecken via Section-Clip
-   ========================================================================== */
+.cms-section {
+    max-width: 1400px; // Standardbreite für große Bildschirme
+    padding: 40px 20px;
+    margin: 20px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    background-color: #fff;
 
-/* 0) optionale Gutter-Variablen für negative Margins (falls nötig) */
-:root {
-    --ft-gutter-desktop: 20px;
-    --ft-gutter-mobile: 10px;
-}
 
-/* 1) Erste Section als weiße Box ohne Innenabstände */
-:where(.cms-page, .content-main)> :is(.cms-section-default, .cms-section).full-width:first-of-type,
-:where(.cms-page, .content-main)> :is(.cms-section):first-of-type {
-    /* als Box zentriert (auch wenn sie als full-width kommt) */
-    max-width: $container-max !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    // Für Bildschirme zwischen 1200px und 1400px
+    @media (min-width: 1201px) and (max-width: 1400px) {
+        max-width: 98%; // Leichter Rand links und rechts
+        padding: 40px 20px;
+    }
 
-    /* Box-Optik */
-    background: #fff !important;
-    border-radius: $radius-base !important;
-    box-shadow: $shadow-card !important;
+    // Kleinere Bildschirme
+    @media (max-width: 1200px) {
+        max-width: 98%; // Leichter Rand links und rechts
+    }
 
-    /* innen randlos + Clipping */
-    padding: 0 !important;
-    overflow: hidden !important;
-}
+    @media (max-width: 768px) {
+        max-width: 95%; // Breite in mobiler Ansicht fast bis zum Rand
+        padding: 10px 10px; // Reduziertes Padding innerhalb der Sektionen für mobile Endgeräte
+    }
 
-/* 1b) Falls dein Wrapper (.cms-page/.content-main) seitlichen Gutter hat
-       UND die erste Section tatsächlich full-bleed sein soll,
-       kannst du sie optional über den Gutter ziehen (auskommentiert lassen, wenn nicht nötig) */
-/*
-:where(.cms-page, .content-main)
-  > :is(.cms-section-default, .cms-section).full-width:first-of-type {
-  margin-left: calc(-1 * var(--ft-gutter-desktop));
-  margin-right: calc(-1 * var(--ft-gutter-desktop));
-}
-@media (max-width: 768px) {
-  :where(.cms-page, .content-main)
-    > :is(.cms-section-default, .cms-section).full-width:first-of-type {
-    margin-left: calc(-1 * var(--ft-gutter-mobile));
-    margin-right: calc(-1 * var(--ft-gutter-mobile));
-  }
-}
-*/
-
-/* 2) Innere Wrapper im HERO (nur in der ERSTEN Section) */
-:where(.cms-page, .content-main)> :is(.cms-section-default, .cms-section):first-of-type :is(.cms-section__container, .cms-section-container, .container, .cms-block-container) {
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: none !important;
-}
-
-/* 3) Bootstrap-Gutter im HERO kappen (nur in der ERSTEN Section) */
-:where(.cms-page, .content-main)> :is(.cms-section-default, .cms-section):first-of-type :is(.row, .cms-row) {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-:where(.cms-page, .content-main)> :is(.cms-section-default, .cms-section):first-of-type :is(.col, [class^="col-"], [class*=" col-"]) {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-
-/* 4) Blöcke & Slider-Wrapper im HERO bündig setzen (nur ERSTE Section) */
-:where(.cms-page, .content-main)> :is(.cms-section-default, .cms-section):first-of-type :is(.cms-block,
-    .cms-element-image-slider, .cms-element-image,
-    .base-slider, .base-slider-container,
-    .image-slider, .image-slider-container,
-    .image-slider-item, .image-slider-item-container,
-    .tns-outer, .tns-inner) {
-    padding: 0 !important;
-    margin: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    /* Radius liegt an der Section */
-}
-
-/* 5) Bilder im HERO vollflächig */
-:where(.cms-page, .content-main)> :is(.cms-section-default, .cms-section):first-of-type img {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    /* bei fixer Höhe: height:100%; object-fit:cover; */
+    // Für Bildschirme über 1400px
+    @media (min-width: 1401px) {
+        max-width: 1400px; // Begrenzt die Breite auf 1400px
+    }
 }
