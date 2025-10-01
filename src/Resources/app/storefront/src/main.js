@@ -1,5 +1,7 @@
 const PluginManager = window.PluginManager;
 
+import "./main/header-state.js";
+
 import StickyAddToCart from "./plugin/sticky-add-to-cart/sticky-add-to-cart.plugin";
 import NavHoverIntent from "./plugin/nav-hover-intent/nav-hover-intent.plugin";
 

@@ -1,7 +1,13 @@
 {% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
 
-{% block layout_header_navigation %}
-	<div class="ft-nav" data-nav-hover-intent>
+{% block layout_header %}
+	{# Body-Klasse (für Scroll-Zustand via JS) #}
+	{{ parent() }}
+{% endblock %}
+
+{# Optional: Container-Schale im Header enger/harmonisiert #}
+{% block layout_header_container %}
+	<div class="container ft-header-container">
 		{{ parent() }}
 	</div>
 {% endblock %}
