@@ -80,8 +80,16 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
 
 /* Sicherstellen, dass WIR die Section selbst treffen – egal welche Basis-Klasse */
 .cms-section.ft-hero-boxed-fill,
-.cms-section-default.full-width.ft-hero-boxed-fill,
+cms-section-default full-width .cms-section-default.full-width.ft-hero-boxed-fill,
 .ft-hero-boxed-fill {
+
+    --bs-gutter-x: 0 !important;
+    /* <— Schlüssel! */
+    padding-left: 0 !important;
+    /* falls noch eine harte Regel aktiv ist */
+    padding-right: 0 !important;
+
+
     /* weiße Box-Optik an der Section selbst */
     background: #fff !important;
     border-radius: $radius-base !important;
