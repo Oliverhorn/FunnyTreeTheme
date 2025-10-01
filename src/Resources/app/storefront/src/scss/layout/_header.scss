@@ -1,4 +1,17 @@
-/* ===== Header generisch ===== */
+/* ==========================================================================
+   FunnyTree – Header / Navbar (Apple-like)
+   ========================================================================== */
+
+/* ---------- Variablen (optional anpassen) ---------- */
+:root {
+    --ft-nav-color: #0b1220;
+    /* Default Textfarbe im Header */
+    --ft-accent: #111827;
+    /* Hover-/Aktiv-Nuance */
+    --ft-hairline: rgba(15, 23, 42, .06);
+}
+
+/* ---------- Header Grundlayout ---------- */
 .header-main {
     position: sticky;
     top: 0;
@@ -6,7 +19,8 @@
     background: transparent;
     transition: background-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
     backdrop-filter: none;
-    /* wird beim Scrollen aktiv */
+    /* wird beim Scrollen gesetzt */
+    border-bottom: 0;
 }
 
 .ft-header-container {
@@ -16,20 +30,23 @@
     align-items: center;
     gap: 24px;
     padding-inline: clamp(16px, 3vw, 32px);
+    margin-inline: auto;
 }
 
 /* Logo-Größe & Header-Höhe */
 .header-logo-main img {
     height: clamp(28px, 4.2vw, 36px);
     width: auto;
+    transition: transform .2s ease;
 }
 
-/* Primäre Navigation (Desktop) */
+/* ---------- Navigation Desktop ---------- */
 .main-navigation {
     flex: 1 1 auto;
 }
 
 .main-navigation .nav {
+    display: flex;
     gap: clamp(12px, 2.2vw, 24px);
 }
 
@@ -39,7 +56,9 @@
     font-weight: 600;
     letter-spacing: .01em;
     color: var(--ft-nav-color, #0b1220);
-    transition: color .2s ease;
+    transition: color .2s ease, transform .15s ease;
+    text-decoration: none;
+    outline: none;
 }
 
 .ft-nav-item>a.nav-link::after {
@@ -53,8 +72,12 @@
     transform: scaleX(0);
     transform-origin: center;
     background: currentColor;
-    opacity: .8;
-    transition: transform .2s ease;
+    opacity: .85;
+    transition: transform .18s ease;
+}
+
+.ft-nav-item>a.nav-link:hover {
+    transform: translateY(-1px);
 }
 
 .ft-nav-item>a.nav-link:hover::after,
@@ -63,30 +86,47 @@
     transform: scaleX(1);
 }
 
-/* Hover/Fokus */
 .ft-nav-item>a.nav-link:hover,
 .ft-nav-item>a.nav-link:focus-visible {
-    color: #111827;
-    /* dunkler */
-    outline: none;
+    color: var(--ft-accent);
 }
 
-/* Dropdown / Mega-Light (Basis) */
+/* ---------- Dropdown / Flyout ---------- */
 .navigation-flyout {
-    border: none;
+    border: 0;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(2, 6, 23, .08);
     padding: 16px 20px;
+    box-shadow: 0 20px 50px rgba(2, 6, 23, .10);
+    animation: ftMenu .16s ease both;
+    backdrop-filter: saturate(160%) blur(10px);
+    background: rgba(255, 255, 255, .96);
 }
 
-/* Scroll-Zustand: solid + Blur (Apple-Feeling) */
+@keyframes ftMenu {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- Scroll-Zustand (Glassmorphism + Hairline) ---------- */
 body.is-scrolled .header-main {
-    background: rgba(255, 255, 255, .8);
-    backdrop-filter: saturate(180%) blur(10px);
-    box-shadow: 0 1px 0 rgba(15, 23, 42, .06);
+    background: rgba(255, 255, 255, .86);
+    backdrop-filter: saturate(180%) blur(16px);
+    box-shadow: 0 1px 8px rgba(2, 6, 23, .06), inset 0 -1px 0 var(--ft-hairline);
 }
 
-/* Header über dunklem Hero: invertierte Farben im initialen Zustand */
+/* Kleiner „Snap“ beim Scrollen */
+body.is-scrolled .header-logo-main img {
+    transform: scale(.96);
+}
+
+/* ---------- Header über dunklem Hero (invertierte Farben) ---------- */
 body.is-over-hero .header-main {
     --ft-nav-color: #ffffff;
 }
@@ -101,7 +141,34 @@ body.is-over-hero.is-scrolled .header-main {
     --ft-nav-color: #0b1220;
 }
 
-/* Mobile: ruhiger Header, klare Tappable-Bereiche */
+/* ---------- Topbar (nahbar, optional) ---------- */
+.ft-topbar {
+    background: #0b1220;
+    color: #fff;
+    font-size: 14px;
+}
+
+.ft-topbar .container {
+    max-width: 1320px;
+    padding: 6px 16px;
+    margin-inline: auto;
+}
+
+.ft-topbar-inner {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.ft-topbar a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255, 255, 255, .45);
+}
+
+/* ---------- Mobile ---------- */
 @media (max-width: 991.98px) {
     .header-main {
         padding-block: 6px;
@@ -111,14 +178,13 @@ body.is-over-hero.is-scrolled .header-main {
         display: none;
     }
 
-    /* Standard Shopware blendet ohnehin aus */
-    /* Optional: Burger etwas größer */
+    /* Shopware blendet ohnehin aus */
     .nav-main-toggle .btn {
         padding: 10px 12px;
     }
 }
 
-/* Fokus-Outline barrierefrei */
+/* ---------- Barrierefreiheit ---------- */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid #2563eb;
