@@ -1,0 +1,91 @@
+/* ==========================================================================
+   FunnyTree – Navigation
+   ========================================================================== */
+
+/* Desktop Navigation-Aufbau */
+.main-navigation {
+    flex: 1 1 auto;
+}
+
+.main-navigation .nav {
+    display: flex;
+    gap: clamp(12px, 2.2vw, 24px);
+}
+
+/* Menü-Items: etwas mehr Spezifität, damit Core-Styles nicht drüberbügeln */
+.header-main .ft-nav-item>a.nav-link,
+.header-main .main-navigation-link {
+    /* beide Varianten abdecken */
+    position: relative;
+    padding: 10px 4px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--ft-nav-color, #0b1220);
+    transition: color .2s ease, transform .15s ease;
+    text-decoration: none;
+    outline: none;
+}
+
+.header-main .ft-nav-item>a.nav-link:hover,
+.header-main .main-navigation-link:hover {
+    transform: translateY(-1px);
+    color: #111827;
+}
+
+/* Underline-Animation */
+.header-main .ft-nav-item>a.nav-link::after,
+.header-main .main-navigation-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: center;
+    background: currentColor;
+    opacity: .85;
+    transition: transform .18s ease;
+}
+
+.header-main .ft-nav-item>a.nav-link:hover::after,
+.header-main .ft-nav-item>a.nav-link:focus-visible::after,
+.header-main .ft-nav-item>a.nav-link.is-active::after,
+.header-main .main-navigation-link:hover::after,
+.header-main .main-navigation-link:focus-visible::after,
+.header-main .main-navigation-link.is-active::after {
+    transform: scaleX(1);
+}
+
+/* Flyout / Dropdown */
+.navigation-flyout {
+    z-index: 60;
+    /* über dem Header-Blur */
+    background: rgba(255, 255, 255, .96);
+    backdrop-filter: saturate(160%) blur(10px);
+    border: 0;
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 20px 50px rgba(2, 6, 23, .10);
+    animation: ftMenu .16s ease both;
+}
+
+@keyframes ftMenu {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Mobile – Standard Shopware blendet die Hauptnav ohnehin aus */
+@media (max-width: 991.98px) {
+    .main-navigation {
+        display: none;
+    }
+}

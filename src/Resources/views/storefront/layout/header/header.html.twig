@@ -5,9 +5,7 @@
 	{{ parent() }}
 {% endblock %}
 
-{# Optional: Container-Schale im Header enger/harmonisiert #}
+{# Entferne die eigene Wrapper-Container-DIV komplett: #}
 {% block layout_header_container %}
-	<div class="container ft-header-container">
-		{{ parent() }}
-	</div>
+	{{ parent() }}
 {% endblock %}
