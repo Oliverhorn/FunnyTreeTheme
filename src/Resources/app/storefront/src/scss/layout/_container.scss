@@ -1,43 +1,169 @@
-// Entferne den Schatten aus den Blöcken
-.cms-block {
-    padding: 20px; // Standard-Padding für größere Bildschirme
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: none; // Schatten entfernen
+/* ==========================================================================
+   CONTAINER / CMS-LAYOUT (FunnyTree – Basis)
+   - weiße „Boxed“-Sections mit Radius + Shadow
+   - keine doppelten Gutter (horizontale Abstände nur am Main-Wrapper)
+   - PRO-SECTION Utility: .ft-hero-boxed-fill (in Erlebniswelten setzen)
+   ========================================================================== */
 
-    // Kleineres Padding für mobile Ansichten
+/* ---- Tokens ------------------------------------------------------------- */
+$container-max: var(--ft-container-max, 1400px);
+$gutter-desktop: 20px;
+$gutter-mobile: 10px;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$radius-base: var(--ft-base-radius, 12px);
+$shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
+
+/* ---- 1) Haupt-Wrapper --------------------------------------------------- */
+.content-main,
+.cms-page {
+    max-width: $container-max;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter-desktop;
+    padding-right: $gutter-desktop;
+
     @media (max-width: 768px) {
-        padding: 15px 0px; // Geringeres Padding, nur auf Mobilgeräten
+        padding-left: $gutter-mobile;
+        padding-right: $gutter-mobile;
     }
 }
 
+/* ---- 2) Standard-Sections (weiße Box) ---------------------------------- */
+.cms-section:not(.cms-section--full-width) {
+    max-width: $container-max;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border-radius: $radius-base;
+    box-shadow: $shadow-card;
+    padding-top: 40px;
+    /* nur vertikal */
+    padding-bottom: 40px;
+}
+
+/* Vertikalabstand zwischen Sections */
 .cms-section {
-    max-width: 1400px; // Standardbreite für große Bildschirme
-    padding: 40px 20px;
-    margin: 20px auto;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
-    background-color: #fff;
-
-
-    // Für Bildschirme zwischen 1200px und 1400px
-    @media (min-width: 1201px) and (max-width: 1400px) {
-        max-width: 98%; // Leichter Rand links und rechts
-        padding: 40px 20px;
-    }
-
-    // Kleinere Bildschirme
-    @media (max-width: 1200px) {
-        max-width: 98%; // Leichter Rand links und rechts
-    }
+    margin-bottom: $space-8;
 
     @media (max-width: 768px) {
-        max-width: 95%; // Breite in mobiler Ansicht fast bis zum Rand
-        padding: 10px 10px; // Reduziertes Padding innerhalb der Sektionen für mobile Endgeräte
+        margin-bottom: $space-6;
     }
+}
 
-    // Für Bildschirme über 1400px
-    @media (min-width: 1401px) {
-        max-width: 1400px; // Begrenzt die Breite auf 1400px
+/* ---- 3) Innere Wrapper neutralisieren (kein doppelter Gutter) ---------- */
+.cms-section__container,
+.cms-section-container,
+.cms-section .container,
+.cms-block-container {
+    max-width: $container-max;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+/* ---- 4) Blöcke: runde Ecken + Clipping --------------------------------- */
+.cms-block {
+    border-radius: $radius-base;
+    overflow: hidden;
+    /* Bilder/Slider clippen sauber */
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   UTILITY: .ft-hero-boxed-fill
+   → Für eine BELIEBIGE Section (in Erlebniswelten an der Section setzen)
+   → Bild/Slider füllt die Box bündig; runde Ecken via Section
+   ========================================================================== */
+
+/* An der Section selbst setzen (zusätzlich zu deren vorhandenen Klassen) */
+.ft-hero-boxed-fill {
+    /* Die Section wird zur weißen Box (falls full-width konfiguriert ist) */
+    max-width: $container-max !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    background: #fff !important;
+    border-radius: $radius-base !important;
+    box-shadow: $shadow-card !important;
+
+    /* innen randlos + Clipping für die Ecken */
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* alle üblichen inneren Wrapper randlos halten */
+.ft-hero-boxed-fill .cms-section__container,
+.ft-hero-boxed-fill .cms-section-container,
+.ft-hero-boxed-fill .container,
+.ft-hero-boxed-fill .cms-block-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+}
+
+/* Bootstrap-Gutter der Row/Cols im Block entfernen */
+.ft-hero-boxed-fill .row,
+.ft-hero-boxed-fill .cms-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.ft-hero-boxed-fill .col,
+.ft-hero-boxed-fill [class^="col-"],
+.ft-hero-boxed-fill [class*=" col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Slider-/Bild-Wrapper bündig */
+.ft-hero-boxed-fill .cms-block,
+.ft-hero-boxed-fill .cms-element-image-slider,
+.ft-hero-boxed-fill .cms-element-image,
+.ft-hero-boxed-fill .base-slider,
+.ft-hero-boxed-fill .base-slider-container,
+.ft-hero-boxed-fill .image-slider,
+.ft-hero-boxed-fill .image-slider-container,
+.ft-hero-boxed-fill .image-slider-item,
+.ft-hero-boxed-fill .image-slider-item-container,
+.ft-hero-boxed-fill .tns-outer,
+.ft-hero-boxed-fill .tns-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    /* Radius liegt an der Section */
+}
+
+/* Bilder vollflächig */
+.ft-hero-boxed-fill img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    /* bei fixer Höhe ggf.: height:100%; object-fit:cover; */
+}
+
+/* ==========================================================================
+   OPTIONAL: .ft-hero-bleed  → Full-bleed über den Seiten-Gutter
+   (nur verwenden, wenn du bewusst über die grauen Seitenränder ziehen willst)
+   ========================================================================== */
+
+/* Desktop/Mobile Gutter-Werte als CSS-Var, falls du sie brauchst */
+:root {
+    --ft-gutter-desktop: 20px;
+    --ft-gutter-mobile: 10px;
+}
+
+/* Section über den Wrapper-Gutter hinausziehen (keine grauen Ränder sichtbar) */
+.ft-hero-bleed {
+    margin-left: calc(-1 * var(--ft-gutter-desktop));
+    margin-right: calc(-1 * var(--ft-gutter-desktop));
+
+    @media (max-width: 768px) {
+        margin-left: calc(-1 * var(--ft-gutter-mobile));
+        margin-right: calc(-1 * var(--ft-gutter-mobile));
     }
 }
