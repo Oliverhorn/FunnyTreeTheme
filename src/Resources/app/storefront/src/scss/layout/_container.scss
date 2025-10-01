@@ -74,41 +74,58 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
 
 /* ==========================================================================
    UTILITY: .ft-hero-boxed-fill
-   → In den Erlebniswelten an der SECTION setzen
+   → In den Erlebniswelten an der SECTION (äußeres div.cms-section) setzen
    → Bild/Slider füllt die Box bündig; runde Ecken via Section
    ========================================================================== */
 
-/* Sicherstellen, dass WIR die Section selbst treffen – egal welche Basis-Klasse */
+/* 4a) Utility an der äußeren Section (div) selbst */
 .cms-section.ft-hero-boxed-fill,
 .cms-section-default.full-width.ft-hero-boxed-fill,
+/* falls mal direkt gesetzt */
 .ft-hero-boxed-fill {
-
-    --bs-gutter-x: 0 !important;
-    /* <— Schlüssel! */
-    padding-left: 0 !important;
-    /* falls noch eine harte Regel aktiv ist */
-    padding-right: 0 !important;
-
-
-    /* weiße Box-Optik an der Section selbst */
+    /* Box-Optik */
     background: #fff !important;
     border-radius: $radius-base !important;
     box-shadow: $shadow-card !important;
 
-    /* ALLE Innenabstände wirklich 0 (schlägt 40px/20px aus anderen Files) */
+    /* ALLE Innenabstände hart auf 0 */
     padding: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 
-    /* sicher zentriert als Box, auch wenn Section „full-width“ ist */
+    /* zentriert als Box, auch wenn Section full-width ist */
     max-width: $container-max !important;
     margin-left: auto !important;
     margin-right: auto !important;
 
     /* runde Ecken clippen das Bild */
     overflow: hidden !important;
+}
+
+/* 4b) WICHTIG: das INNERE <section class="cms-section-default full-width"> treffen
+      (genau hier kommen die 20px via calc(var(--bs-gutter-x)*.5) her) */
+.cms-section.ft-hero-boxed-fill>section.cms-section-default.full-width,
+.cms-section.ft-hero-boxed-fill>section.cms-section-default {
+    /* Bootstrap-Gutter auf 0 setzen → calc(...*.5) wird 0 */
+    --bs-gutter-x: 0 !important;
+
+    /* und alle seitlichen Paddings sicher killen */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-inline: 0 !important;
+
+    /* Box-Optik + Clipping (falls Core hier was setzt) */
+    background: #fff !important;
+    border-radius: $radius-base !important;
+    box-shadow: $shadow-card !important;
+    overflow: hidden !important;
+
+    /* als Box zentrieren */
+    max-width: $container-max !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 /* alle üblichen inneren Wrapper randlos halten */
@@ -165,7 +182,6 @@ $shadow-card: 0 2px 8px rgba(0, 0, 0, .05);
 
 /* ==========================================================================
    OPTIONAL: .ft-hero-bleed  → Full-bleed über den Seiten-Gutter
-   (nur verwenden, wenn du bewusst über die grauen Seitenränder ziehen willst)
    ========================================================================== */
 
 :root {
