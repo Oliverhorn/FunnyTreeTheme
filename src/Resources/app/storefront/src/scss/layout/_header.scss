@@ -1,0 +1,85 @@
+/* =======================
+   EMZ-like Header Desktop
+   ======================= */
+
+/* --- Topbar --- */
+.ft-topbar {
+    background: #0b1220;
+    color: #fff;
+    font-size: 14px;
+}
+
+.ft-topbar .container {
+    max-width: 1320px;
+    padding: 6px 16px;
+}
+
+.ft-topbar-inner {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ft-topbar a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255, 255, 255, .45);
+}
+
+.ft-topbar-divider {
+    height: 1px;
+    background: rgba(15, 23, 42, .1);
+}
+
+/* --- Header Container: 3 Spalten (Logo | Suche | Icons) --- */
+.header-main {
+    background: #fff;
+    box-shadow: none;
+}
+
+/* zunächst klassisch weiß */
+.header-main>.container {
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 3vw, 32px);
+    padding-block: 10px;
+    display: grid;
+    grid-template-columns: 260px 1fr auto;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Logo leicht kompakt */
+.header-logo-main img {
+    height: 34px;
+    width: auto;
+}
+
+/* Suche mittig: Volle Breite in Spalte 2 */
+.ft-header-search .header-search {
+    width: 100%;
+}
+
+.ft-header-search .header-search-input {
+    /* Optional dezent: */
+    border-radius: 12px;
+}
+
+/* Iconleiste rechts: Abstand harmonisieren */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Mobile unangetastet – alles d-lg-block begrenzt Topbar + Suche auf Desktop */
+@media (max-width: 991.98px) {
+    .header-main>.container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 8px;
+    }
+}

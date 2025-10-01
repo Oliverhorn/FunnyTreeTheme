@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions.html.twig' %}
+
+{% block layout_header_actions %}
+	{# Suche als separates Element, damit wir 3 Spalten bauen können #}
+	<div class="ft-header-search d-none d-lg-block">
+		{% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
+	</div>
+
+	{# Danach die Standard-Actions (Account, Wunschliste, Warenkorb, Such-Icon etc.) #}
+	{{ parent() }}
+{% endblock %}

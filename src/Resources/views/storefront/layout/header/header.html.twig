@@ -1,1 +1,24 @@
 {% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{# 1) Topbar vor den eigentlichen Header setzen #}
+{% block layout_header %}
+	<div class="ft-topbar d-none d-lg-block">
+		<div class="container">
+			<div class="ft-topbar-inner">
+				<span class="ft-topbar-phone">
+					☎️
+					<a href="tel:+49-821-1234567">+49&nbsp;821&nbsp;1234567</a>
+				</span>
+				<span class="ft-topbar-msg">Kostenlose Beratung Mo–Fr</span>
+			</div>
+		</div>
+		<div class="ft-topbar-divider"></div>
+	</div>
+
+	{{ parent() }}
+{% endblock %}
+
+{# 2) Nichts doppelt wrappen – wir stylen den Core-Container #}
+{% block layout_header_container %}
+	{{ parent() }}
+{% endblock %}
