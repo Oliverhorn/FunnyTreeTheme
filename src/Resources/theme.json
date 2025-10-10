@@ -84,7 +84,7 @@
       },
       "ft-topbar-email": {
         "type": "text",
-        "value": "service@funnytree.de",
+        "value": "service",
         "label": {
           "de-DE": "E-Mail (optional)",
           "en-GB": "E-mail (optional)"
