@@ -28,7 +28,6 @@
   "previewMedia": "app/storefront/src/assets/preview.png",
   "config": {
     "fields": {
-      /* --- bestehend --- */
       "sw-color-brand-primary": {
         "value": "#16a34a",
         "tab": "colors"
@@ -47,7 +46,6 @@
         "value": "Poppins, Inter, system-ui, Arial, sans-serif",
         "tab": "typography"
       },
-      /* --- NEU: Top-Bar Settings --- */
       "ft-topbar-enabled": {
         "type": "bool",
         "value": true,
@@ -124,7 +122,6 @@
         },
         "tab": "topbar"
       },
-      /* --- NEU: Top-Bar Styling --- */
       "ft-topbar-bg": {
         "type": "color",
         "value": "#0b1220",
@@ -159,8 +156,7 @@
           "de-DE": "Farbe Unterkante",
           "en-GB": "Bottom border color"
         },
-        "tab": "topbar",
-        "editable": "bind:ft-topbar-border-enabled"
+        "tab": "topbar"
       },
       "ft-topbar-icon-tel": {
         "type": "media",
