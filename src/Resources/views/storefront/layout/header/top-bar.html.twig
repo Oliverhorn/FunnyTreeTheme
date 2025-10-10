@@ -1,0 +1,65 @@
+{% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
+
+{% block layout_header_top_bar %}
+	{% if theme_config('ft-topbar-enabled') %}
+		<div class="ft-topbar" role="region" aria-label="Shop-Leiste">
+			<div
+				class="container ft-topbar__inner">
+				{# LEFT: Phone (optional WhatsApp/E-Mail) #}
+				<div class="ft-topbar__left">
+					{% set phone = theme_config('ft-topbar-phone')|default('') %}
+					{% if phone %}
+						<a class="ft-topbar__link ft-topbar__tel" href="tel:{{ phone|replace({' ': '', '(': '', ')': '', '-': ''})|e }}" aria-label="{{ 'ft.topbar.tel.aria'|trans({'%phone%': phone}) }}">
+							{% if theme_config('ft-topbar-icon-tel') %}
+								<img class="ft-topbar__icon" src="{{ theme_config('ft-topbar-icon-tel')|sw_encode_url }}" alt="" aria-hidden="true"/>
+							{% else %}
+								{% sw_include '@Storefront/icons/phone.svg' %}
+							{% endif %}
+							<span class="ft-topbar__text">
+								{{ theme_config('ft-topbar-tel-text')|default('Hotline') }}:
+								{{ phone }}
+							</span>
+						</a>
+					{% endif %}
+
+					{% if theme_config('ft-topbar-whatsapp') %}
+						<a class="ft-topbar__link ft-topbar__wa" href="https://wa.me/{{ theme_config('ft-topbar-whatsapp')|replace({' ': ''})|e }}" rel="noopener" target="_blank">
+							{% sw_icon 'whatsapp' style {'pack':'default','size':'xs'} %}
+							<span class="ft-topbar__text">{{ 'ft.topbar.whatsapp'|trans }}</span>
+						</a>
+					{% endif %}
+
+					{% if theme_config('ft-topbar-email') %}
+						<a class="ft-topbar__link ft-topbar__mail" href="mailto:{{ theme_config('ft-topbar-email')|e }}">
+							{% sw_icon 'mail' style {'pack':'default','size':'xs'} %}
+							<span class="ft-topbar__text">{{ theme_config('ft-topbar-email') }}</span>
+						</a>
+					{% endif %}
+				</div>
+
+				{# CENTER: Announcement/Free shipping text #}
+				{% if theme_config('ft-topbar-note') %}
+					<div class="ft-topbar__center">
+						<span class="ft-topbar__note">
+							{{ theme_config('ft-topbar-note') }}
+						</span>
+					</div>
+				{% endif %}
+
+				{# RIGHT: Language + Currency #}
+				<div class="ft-topbar__right">
+					{% if theme_config('ft-topbar-show-language') %}
+						<div class="ft-topbar__language">
+							{% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}
+						</div>
+					{% endif %}
+					{% if theme_config('ft-topbar-show-currency') %}
+						<div class="ft-topbar__currency">
+							{% sw_include '@Storefront/storefront/layout/header/actions/currency-widget.html.twig' %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
