@@ -2,19 +2,19 @@
 
 {% block layout_header_top_bar %}
 	{% if theme_config('ft-topbar-enabled') %}
-		<div class="ft-topbar" role="region" aria-label="Shop-Leiste">
+		<div class="ft-topbar{{ theme_config('ft-topbar-border-enabled') ? ' ft-topbar--border' : '' }}" role="region" aria-label="Shop-Leiste" style="
+								                --ft-topbar-bg: {{ theme_config('ft-topbar-bg')|default('#0b1220') }};
+								                --ft-topbar-fg: {{ theme_config('ft-topbar-fg')|default('#ffffff') }};
+								                --ft-topbar-border: {{ theme_config('ft-topbar-border-color')|default('#e5e7eb') }};
+								             ">
 			<div
 				class="container ft-topbar__inner">
-				{# LEFT: Phone (optional WhatsApp/E-Mail) #}
+
+				{# LEFT: Telefon / WhatsApp / E-Mail #}
 				<div class="ft-topbar__left">
 					{% set phone = theme_config('ft-topbar-phone')|default('') %}
 					{% if phone %}
 						<a class="ft-topbar__link ft-topbar__tel" href="tel:{{ phone|replace({' ': '', '(': '', ')': '', '-': ''})|e }}" aria-label="{{ 'ft.topbar.tel.aria'|trans({'%phone%': phone}) }}">
-							{% if theme_config('ft-topbar-icon-tel') %}
-								<img class="ft-topbar__icon" src="{{ theme_config('ft-topbar-icon-tel')|sw_encode_url }}" alt="" aria-hidden="true"/>
-							{% else %}
-								{% sw_include '@Storefront/icons/phone.svg' %}
-							{% endif %}
 							<span class="ft-topbar__text">
 								{{ theme_config('ft-topbar-tel-text')|default('Hotline') }}:
 								{{ phone }}
@@ -24,29 +24,25 @@
 
 					{% if theme_config('ft-topbar-whatsapp') %}
 						<a class="ft-topbar__link ft-topbar__wa" href="https://wa.me/{{ theme_config('ft-topbar-whatsapp')|replace({' ': ''})|e }}" rel="noopener" target="_blank">
-							{% sw_icon 'whatsapp' style {'pack':'default','size':'xs'} %}
-							<span class="ft-topbar__text">{{ 'ft.topbar.whatsapp'|trans }}</span>
+							<span class="ft-topbar__text">WhatsApp</span>
 						</a>
 					{% endif %}
 
 					{% if theme_config('ft-topbar-email') %}
 						<a class="ft-topbar__link ft-topbar__mail" href="mailto:{{ theme_config('ft-topbar-email')|e }}">
-							{% sw_icon 'mail' style {'pack':'default','size':'xs'} %}
 							<span class="ft-topbar__text">{{ theme_config('ft-topbar-email') }}</span>
 						</a>
 					{% endif %}
 				</div>
 
-				{# CENTER: Announcement/Free shipping text #}
+				{# CENTER: Hinweistext (optional) #}
 				{% if theme_config('ft-topbar-note') %}
 					<div class="ft-topbar__center">
-						<span class="ft-topbar__note">
-							{{ theme_config('ft-topbar-note') }}
-						</span>
+						<span class="ft-topbar__note">{{ theme_config('ft-topbar-note') }}</span>
 					</div>
 				{% endif %}
 
-				{# RIGHT: Language + Currency #}
+				{# RIGHT: Sprache + Währung (optional) #}
 				<div class="ft-topbar__right">
 					{% if theme_config('ft-topbar-show-language') %}
 						<div class="ft-topbar__language">
@@ -59,6 +55,7 @@
 						</div>
 					{% endif %}
 				</div>
+
 			</div>
 		</div>
 	{% endif %}
