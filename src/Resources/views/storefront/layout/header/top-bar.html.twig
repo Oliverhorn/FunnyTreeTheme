@@ -1,62 +1,31 @@
 {% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
 
 {% block layout_header_top_bar %}
-	{% if theme_config('ft-topbar-enabled') %}
-		<div class="ft-topbar{{ theme_config('ft-topbar-border-enabled') ? ' ft-topbar--border' : '' }}" role="region" aria-label="Shop-Leiste" style="
-								                --ft-topbar-bg: {{ theme_config('ft-topbar-bg')|default('#0b1220') }};
-								                --ft-topbar-fg: {{ theme_config('ft-topbar-fg')|default('#ffffff') }};
-								                --ft-topbar-border: {{ theme_config('ft-topbar-border-color')|default('#e5e7eb') }};
-								             ">
-			<div
-				class="container ft-topbar__inner">
 
-				{# LEFT: Telefon / WhatsApp / E-Mail #}
-				<div class="ft-topbar__left">
-					{% set phone = theme_config('ft-topbar-phone')|default('') %}
-					{% if phone %}
-						<a class="ft-topbar__link ft-topbar__tel" href="tel:{{ phone|replace({' ': '', '(': '', ')': '', '-': ''})|e }}" aria-label="{{ 'ft.topbar.tel.aria'|trans({'%phone%': phone}) }}">
-							<span class="ft-topbar__text">
-								{{ theme_config('ft-topbar-tel-text')|default('Hotline') }}:
-								{{ phone }}
-							</span>
-						</a>
-					{% endif %}
-
-					{% if theme_config('ft-topbar-whatsapp') %}
-						<a class="ft-topbar__link ft-topbar__wa" href="https://wa.me/{{ theme_config('ft-topbar-whatsapp')|replace({' ': ''})|e }}" rel="noopener" target="_blank">
-							<span class="ft-topbar__text">WhatsApp</span>
-						</a>
-					{% endif %}
-
-					{% if theme_config('ft-topbar-email') %}
-						<a class="ft-topbar__link ft-topbar__mail" href="mailto:{{ theme_config('ft-topbar-email')|e }}">
-							<span class="ft-topbar__text">{{ theme_config('ft-topbar-email') }}</span>
-						</a>
-					{% endif %}
-				</div>
-
-				{# CENTER: Hinweistext (optional) #}
-				{% if theme_config('ft-topbar-note') %}
-					<div class="ft-topbar__center">
-						<span class="ft-topbar__note">{{ theme_config('ft-topbar-note') }}</span>
+	<div class="top-bar">
+		<div class="emz-top-bar-phone">
+			<a href="tel:{{ 'emz-legendary-theme.header.topbarTelPhone'|trans|replace({' ': ''})|e }}" title="Telephone" rel="noopener">
+				{% if theme_config('emz-header-icon-tel') %}
+					<div class="emz-top-bar-phone-icon">
+						<img src="{{ theme_config('emz-header-icon-tel') |sw_encode_url }}" alt="{{ 'emz-legendary-theme.header.topbarTelPhone'|trans }}"/>
 					</div>
+				{% else %}
+					<span class="emz-top-bar-phone-icon">
+						{% sw_include '@Storefront/icons/phone.svg' %}
+					</span>
 				{% endif %}
-
-				{# RIGHT: Sprache + Währung (optional) #}
-				<div class="ft-topbar__right">
-					{% if theme_config('ft-topbar-show-language') %}
-						<div class="ft-topbar__language">
-							{% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}
-						</div>
-					{% endif %}
-					{% if theme_config('ft-topbar-show-currency') %}
-						<div class="ft-topbar__currency">
-							{% sw_include '@Storefront/storefront/layout/header/actions/currency-widget.html.twig' %}
-						</div>
-					{% endif %}
-				</div>
-
+				<span class="emz-top-bar-phone-text">{{ 'emz-legendary-theme.header.topbarTelText'|trans }}:
+					{{ 'emz-legendary-theme.header.topbarTelPhone'|trans }}</span>
+			</a>
+		</div>
+		<div class="emz-top-bar-right">
+			<div class="emz-top-bar-language">
+				{% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}
+			</div>
+			<div class="emz-top-bar-currency">
+				{% sw_include '@Storefront/storefront/layout/header/actions/currency-widget.html.twig' %}
 			</div>
 		</div>
-	{% endif %}
+	</div>
+
 {% endblock %}
