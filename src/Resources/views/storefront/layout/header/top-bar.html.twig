@@ -1,3 +1,4 @@
+{# src/Resources/views/storefront/layout/header/top-bar.html.twig #}
 {% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
 
 {% block layout_header_top_bar %}
@@ -5,32 +6,30 @@
 		<div
 			class="container ft-topbar__inner">
 
-			{# LEFT: Desktop = Telefon, < LG = WhatsApp #}
+			{# LEFT: Desktop = Telefon / <LG = WhatsApp #}
 			<div
 				class="ft-topbar__left">
-				{# Telefon (nur ab lg sichtbar) #}
+
+				{# 📞 Telefon-Link – nur Desktop sichtbar #}
 				{% set tel = theme_config('ft-topbar-phone')|default('') %}
 				{% if tel %}
 					<a href="tel:{{ tel|replace({' ': '', '(': '', ')': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__tel d-none d-lg-inline-flex" aria-label="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}" title="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}">
-						<span
-							class="ft-topbar__icon">
-							{# Eigenes Icon bereitstellen: src/Resources/views/icons/phone.svg #}
+						<span class="ft-topbar__icon">
 							{% sw_include '@FunnyTreeTheme/icons/phone.svg' %}
 						</span>
 						<span class="ft-topbar__text">{{ tel }}</span>
 					</a>
 				{% endif %}
 
-				{# WhatsApp (bis lg sichtbar) #}
+				{# 💬 WhatsApp-Link – nur auf Mobile/Tablet sichtbar #}
 				{% set wa = theme_config('ft-topbar-whatsapp')|default('') %}
 				{% if wa %}
 					<a href="https://wa.me/{{ wa|replace({' ': '', '+': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__whatsapp d-inline-flex d-lg-none" target="_blank" rel="noopener" aria-label="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}" title="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}">
 						<span
-							class="ft-topbar__icon">
-							{# Eigenes Icon bereitstellen: src/Resources/views/icons/whatsapp.svg #}
+							class="ft-topbar__icon ft-topbar__icon--whatsapp">
+							{# wichtig: kein currentColor → echtes WhatsApp-Grün bleibt erhalten #}
 							{% sw_include '@FunnyTreeTheme/icons/whatsapp.svg' %}
 						</span>
-						<span class="ft-topbar__text">{{ wa }}</span>
 					</a>
 				{% endif %}
 			</div>
