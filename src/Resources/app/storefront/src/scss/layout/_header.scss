@@ -1,10 +1,11 @@
 /* =========================================
-   Header (ohne Twig-Änderungen, Bootstrap-kompatibel)
+   FunnyTree Header (clean, themefähig)
    ========================================= */
 
 /* Grundfläche */
 .header-main {
-    background: #fff;
+    background: theme-color('ft-header-bg', #ffffff);
+    color: theme-color('ft-header-fg', #0f172a);
     box-shadow: none;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -27,9 +28,7 @@
 
 .header-search-col {
     flex: 1 1 0;
-    /* Suche füllt den freien Platz */
     min-width: 0;
-    /* für korrektes Truncation-Verhalten */
 }
 
 /* Actions nach rechts schieben */
@@ -51,6 +50,7 @@
 
 .header-search-col .header-search-input {
     border-radius: 12px;
+    color: theme-color('ft-header-fg', #0f172a);
 }
 
 /* Buttons rechts: kompakter Abstand */
@@ -69,13 +69,27 @@
     padding-bottom: 16px;
 }
 
-/* Hover-Feedback für Icons – nutzt globale Theme-Farbe */
+/* Icons im Header erben Textfarbe */
 .header-actions-btn .icon {
-    transition: color .2s ease;
+    color: theme-color('ft-header-fg', #0f172a);
+    transition: color 0.2s ease;
 }
 
+/* Hover-Farbe aus theme.json */
 .header-actions-btn:hover .icon {
     color: theme-color('ft-color-header-hover', #16a34a);
+}
+
+/* Links im Header (z. B. Account, Wunschliste etc.) */
+.header-main a {
+    color: theme-color('ft-header-fg', #0f172a);
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.header-main a:hover {
+    color: theme-color('ft-color-header-hover', #16a34a);
+    text-decoration: none;
 }
 
 /* ---- Responsive Tweaks ---- */

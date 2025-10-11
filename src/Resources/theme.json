@@ -63,14 +63,88 @@
         "value": "#16a34a",
         "label": {
           "de-DE": "Hover-Farbe (Header & Top-Bar)",
-          "en-GB": "Hover color (Header & Top-Bar)"
+          "en-GB": "Hover color (Header & Top bar)"
         },
         "helpText": {
-          "de-DE": "Wird für Icons und Links in Header & Top-Bar beim Hover verwendet",
-          "en-GB": "Used for icons and links in header & top bar on hover"
+          "de-DE": "Wird für Icons/Links im Header und in der Top-Bar beim Hover genutzt",
+          "en-GB": "Used for icons/links in header and top bar on hover"
         },
         "tab": "Design",
         "block": "Farben"
+      },
+      "ft-header-bg": {
+        "type": "color",
+        "value": "#ffffff",
+        "label": {
+          "de-DE": "Header – Hintergrund",
+          "en-GB": "Header – Background"
+        },
+        "tab": "Design",
+        "block": "Header"
+      },
+      "ft-header-fg": {
+        "type": "color",
+        "value": "#0f172a",
+        "label": {
+          "de-DE": "Header – Text/Icons (Basis)",
+          "en-GB": "Header – Text/Icons (base)"
+        },
+        "tab": "Design",
+        "block": "Header"
+      },
+      "ft-topbar-bg": {
+        "type": "color",
+        "value": "#ffffff",
+        "label": {
+          "de-DE": "Top-Bar – Hintergrund",
+          "en-GB": "Top bar – Background"
+        },
+        "tab": "Design",
+        "block": "Top-Bar"
+      },
+      "ft-topbar-fg": {
+        "type": "color",
+        "value": "#0f172a",
+        "label": {
+          "de-DE": "Top-Bar – Text/Icons (Basis)",
+          "en-GB": "Top bar – Text/Icons (base)"
+        },
+        "tab": "Design",
+        "block": "Top-Bar"
+      },
+      "ft-topbar-border-color": {
+        "type": "color",
+        "value": "#000000",
+        "label": {
+          "de-DE": "Top-Bar – Unterer Rand",
+          "en-GB": "Top bar – Bottom border"
+        },
+        "tab": "Design",
+        "block": "Top-Bar"
+      },
+      "ft-cover-color": {
+        "type": "color",
+        "value": "#000000",
+        "label": {
+          "de-DE": "Cover-Farbe (Overlay)",
+          "en-GB": "Cover color (overlay)"
+        },
+        "tab": "Design",
+        "block": "Hintergrund"
+      },
+      "ft-cover-opacity": {
+        "type": "text",
+        "value": "0.25",
+        "label": {
+          "de-DE": "Cover-Deckkraft (0–1)",
+          "en-GB": "Cover opacity (0–1)"
+        },
+        "helpText": {
+          "de-DE": "0 = transparent, 1 = deckend",
+          "en-GB": "0 = transparent, 1 = opaque"
+        },
+        "tab": "Design",
+        "block": "Hintergrund"
       },
       "ft-font-family-sans": {
         "type": "fontFamily",
