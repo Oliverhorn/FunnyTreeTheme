@@ -5,9 +5,11 @@
 .ft-topbar {
     background: #ffffff;
     color: #0f172a;
-    /* Icons erben currentColor */
     border-bottom: 1px solid #000000;
     /* schwarzer Strich unten */
+
+    /* optional: Übergang für Farbänderungen */
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Layout der inneren Zeile */
@@ -17,8 +19,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    padding: 0.35rem;
-    /*max-width: 1320px;*/
+    padding: 0.35rem 1rem;
     margin: 0 auto;
 }
 
@@ -35,14 +36,18 @@
     gap: 0.5rem;
     color: inherit;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
+/* Hover-Farbe: aus Theme-Konfiguration */
 .ft-topbar__link:hover {
-    opacity: 0.8;
+    color: theme-color('ft-color-header-hover', #16a34a);
+    /* aus theme.json */
+    opacity: 1;
     text-decoration: none;
 }
 
+/* Icon übernimmt Textfarbe */
 .ft-topbar__icon {
     display: inline-flex;
     width: 0.9rem;

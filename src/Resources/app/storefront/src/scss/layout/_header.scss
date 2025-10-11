@@ -6,6 +6,7 @@
 .header-main {
     background: #fff;
     box-shadow: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ---- Zeile mit Logo | Suche | Actions ---- */
@@ -68,13 +69,13 @@
     padding-bottom: 16px;
 }
 
-/* Optional: Hover-Feedback für Icons */
+/* Hover-Feedback für Icons – nutzt globale Theme-Farbe */
 .header-actions-btn .icon {
     transition: color .2s ease;
 }
 
 .header-actions-btn:hover .icon {
-    color: #16a34a;
+    color: theme-color('ft-color-header-hover', #16a34a);
 }
 
 /* ---- Responsive Tweaks ---- */

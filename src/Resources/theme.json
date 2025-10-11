@@ -58,6 +58,20 @@
         "tab": "Design",
         "block": "Farben"
       },
+      "ft-color-header-hover": {
+        "type": "color",
+        "value": "#16a34a",
+        "label": {
+          "de-DE": "Hover-Farbe (Header & Top-Bar)",
+          "en-GB": "Hover color (Header & Top-Bar)"
+        },
+        "helpText": {
+          "de-DE": "Wird für Icons und Links in Header & Top-Bar beim Hover verwendet",
+          "en-GB": "Used for icons and links in header & top bar on hover"
+        },
+        "tab": "Design",
+        "block": "Farben"
+      },
       "ft-font-family-sans": {
         "type": "fontFamily",
         "value": "Poppins, Inter, system-ui, Arial, sans-serif",
