@@ -1,14 +1,18 @@
 /* =========================================
-   FunnyTree Top-Bar (themefähig, stabil)
+   FunnyTree Top-Bar (statisch & wartbar)
    ========================================= */
 
 .ft-topbar {
-    background: theme-color('ft-topbar-bg', #ffffff);
-    color: theme-color('ft-topbar-fg', #0f172a);
-    border-bottom: 1px solid theme-color('ft-topbar-border-color', #000000);
+    background: #ffffff;
+    /* Weißer Hintergrund */
+    color: #0f172a;
+    /* Dunkelblauer Text */
+    border-bottom: 1px solid #000000;
+    /* Schwarze Trennlinie unten */
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
+/* Innenlayout */
 .ft-topbar__inner {
     display: flex;
     justify-content: space-between;
@@ -19,12 +23,14 @@
     margin: 0 auto;
 }
 
+/* Linke Seite (Telefon) */
 .ft-topbar__left {
     display: flex;
     align-items: center;
-    color: theme-color('ft-topbar-fg', #0f172a);
+    color: #0f172a;
 }
 
+/* Telefonlink */
 .ft-topbar__link {
     display: inline-flex;
     align-items: center;
@@ -34,28 +40,34 @@
     transition: color 0.2s ease, opacity 0.2s ease;
 }
 
+/* Hover-Effekt */
 .ft-topbar__link:hover {
-    color: theme-color('ft-color-header-hover', #16a34a);
+    color: #16a34a;
+    /* Primärgrün beim Hover */
     opacity: 1;
 }
 
+/* Icon-Größe */
 .ft-topbar__icon {
     display: inline-flex;
     width: 0.9rem;
     height: 0.9rem;
 }
 
+/* SVG folgt Textfarbe */
 .ft-topbar__icon svg,
 .ft-topbar__icon svg [fill] {
     fill: currentColor !important;
 }
 
+/* Rechte Seite (Sprache & Währung) */
 .ft-topbar__right {
     display: flex;
     align-items: center;
     gap: 1.25rem;
 }
 
+/* Widgets rechts */
 .ft-topbar__language,
 .ft-topbar__currency {
     display: flex;
@@ -63,17 +75,19 @@
 
     a,
     button {
-        color: theme-color('ft-topbar-fg', #0f172a);
+        color: #0f172a;
         transition: color 0.2s ease;
         text-decoration: none;
     }
 
     a:hover,
     button:hover {
-        color: theme-color('ft-color-header-hover', #16a34a);
+        color: #16a34a;
+        /* Hovergrün */
     }
 }
 
+/* Mobile Layout */
 @media (max-width: 768px) {
     .ft-topbar__inner {
         flex-direction: column;

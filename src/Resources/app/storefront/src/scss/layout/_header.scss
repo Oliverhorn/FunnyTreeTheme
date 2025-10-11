@@ -1,11 +1,13 @@
 /* =========================================
-   FunnyTree Header (clean, themefähig)
+   FunnyTree Header (statisch & wartbar)
    ========================================= */
 
 /* Grundfläche */
 .header-main {
-    background: theme-color('ft-header-bg', #ffffff);
-    color: theme-color('ft-header-fg', #0f172a);
+    background: #ffffff;
+    /* Weiß */
+    color: #0f172a;
+    /* Dunkelblau */
     box-shadow: none;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -29,6 +31,7 @@
 .header-search-col {
     flex: 1 1 0;
     min-width: 0;
+    /* für korrektes Truncation-Verhalten */
 }
 
 /* Actions nach rechts schieben */
@@ -50,7 +53,7 @@
 
 .header-search-col .header-search-input {
     border-radius: 12px;
-    color: theme-color('ft-header-fg', #0f172a);
+    color: #0f172a;
 }
 
 /* Buttons rechts: kompakter Abstand */
@@ -71,24 +74,25 @@
 
 /* Icons im Header erben Textfarbe */
 .header-actions-btn .icon {
-    color: theme-color('ft-header-fg', #0f172a);
+    color: #0f172a;
     transition: color 0.2s ease;
 }
 
-/* Hover-Farbe aus theme.json */
+/* Hover-Farbe */
 .header-actions-btn:hover .icon {
-    color: theme-color('ft-color-header-hover', #16a34a);
+    color: #16a34a;
+    /* Primärgrün beim Hover */
 }
 
 /* Links im Header (z. B. Account, Wunschliste etc.) */
 .header-main a {
-    color: theme-color('ft-header-fg', #0f172a);
+    color: #0f172a;
     transition: color 0.2s ease;
     text-decoration: none;
 }
 
 .header-main a:hover {
-    color: theme-color('ft-color-header-hover', #16a34a);
+    color: #16a34a;
     text-decoration: none;
 }
 
