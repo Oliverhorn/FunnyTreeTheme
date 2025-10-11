@@ -64,6 +64,18 @@
     height: .9rem;
 }
 
+.header-main .ft-topbar__icon--whatsapp {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+@media (min-width: 768px) {
+    .header-main .ft-topbar__icon--whatsapp {
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+}
+
 .header-main .ft-topbar__icon svg,
 .header-main .ft-topbar__icon svg [fill] {
     width: 100%;
