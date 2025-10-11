@@ -1,8 +1,10 @@
 /* =========================================
-   FunnyTree Header (statisch, inkl. Top-Bar)
+   FunnyTree Header (statisch, Bootstrap-konform)
    ========================================= */
 
-/* Grundfläche Header */
+/* -----------------------------------------
+   HEADER-GRUNDLAGE
+   ----------------------------------------- */
 .header-main {
     background: #ffffff;
     /* Weiß */
@@ -12,7 +14,9 @@
     transition: background-color .2s ease, color .2s ease;
 }
 
-/* -------- TOP-BAR (Layout + Design) -------- */
+/* -----------------------------------------
+   TOP-BAR (Layout + Design)
+   ----------------------------------------- */
 .header-main .ft-topbar {
     background: #ffffff;
     color: #0f172a;
@@ -22,26 +26,18 @@
 
 .header-main .ft-topbar__inner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* Bootstrap steuert Richtung/Ausrichtung über Utilities in Twig */
     flex-wrap: wrap;
     gap: 1rem;
     padding: .35rem 1rem;
     margin: 0 auto;
 }
 
-.header-main .ft-topbar__left,
-.header-main .ft-topbar__right {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-/* Links in der Top-Bar – KEIN display setzen, Utilities regeln das */
+/* Telefon-/WhatsApp-Links */
 .header-main .ft-topbar a.ft-topbar__link {
-    /* display via Bootstrap (d-none / d-lg-inline-flex / d-inline-flex) */
-    /* Flex-Ausrichtung via Bootstrap (align-items-center) */
-    /* Abstand via Bootstrap (gap-2) */
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
     line-height: 1;
     color: inherit;
     text-decoration: none;
@@ -50,7 +46,7 @@
 
 .header-main .ft-topbar a.ft-topbar__link:hover {
     color: #4AC9E3;
-    /* einheitliche Hover-Farbe */
+    /* Hover-Farbe */
     text-decoration: none;
     opacity: 1;
 }
@@ -64,18 +60,6 @@
     height: .9rem;
 }
 
-.header-main .ft-topbar__icon--whatsapp {
-    width: 10.5rem;
-    height: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .header-main .ft-topbar__icon--whatsapp {
-        width: 1.35rem;
-        height: 1.35rem;
-    }
-}
-
 .header-main .ft-topbar__icon svg,
 .header-main .ft-topbar__icon svg [fill] {
     width: 100%;
@@ -83,24 +67,27 @@
     vertical-align: middle;
 }
 
-/* Nur NICHT-WhatsApp-Icons übernehmen die Textfarbe (z. B. Telefon) */
+/* Telefon-Icon folgt Textfarbe */
 .header-main .ft-topbar__icon:not(.ft-topbar__icon--whatsapp) svg,
 .header-main .ft-topbar__icon:not(.ft-topbar__icon--whatsapp) svg [fill] {
     fill: currentColor;
 }
 
-/* (Optional) leicht andere Mobile-Padding-Optik, ansonsten entfernbar */
-@media (max-width: 768px) {
-    .header-main .ft-topbar__inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: .25rem;
-        padding: .5rem .75rem;
-    }
+/* WhatsApp-Icon bewusst größer (SVG behält eigenes Grün) */
+.header-main .ft-topbar__icon--whatsapp {
+    width: 1.75rem;
+    /* ggf. erhöhen, z. B. 2rem oder 10rem */
+    height: 1.75rem;
 }
 
-/* -------- HEADER-REIHE (Logo | Suche | Actions) -------- */
-/* (unverändert gelassen – Bootstrap-kompatibel) */
+.header-main .ft-topbar__icon--whatsapp svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* -----------------------------------------
+   HEADER-ROW (Logo | Suche | Aktionen)
+   ----------------------------------------- */
 .header-row {
     display: flex;
     align-items: center;
@@ -109,6 +96,7 @@
     padding: 20px 10px;
 }
 
+/* Spaltenverhalten */
 .menu-toggle-col,
 .header-logo-col,
 .header-actions-col {
@@ -121,15 +109,18 @@
     /* für korrektes Truncation-Verhalten */
 }
 
+/* Aktionen nach rechts schieben */
 .header-actions-col {
     margin-left: auto;
 }
 
+/* Logo kompakt */
 .header-logo-col .header-logo-main img {
     height: 34px;
     width: auto;
 }
 
+/* Suche */
 .header-search-col .header-search {
     max-width: 100%;
     margin: 0;
@@ -140,20 +131,23 @@
     color: #0f172a;
 }
 
+/* Buttons rechts */
 .header-actions {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+/* Mobile-Suchzeile (Core) */
 .header-mobile-search-row {
-    /* unter der Navigation */
+    /* liegt unter der Navigation */
 }
 
 .header-mobile-search-row .header-search-col-mobile .header-search {
     padding-bottom: 16px;
 }
 
+/* Header-Icons (Account/Wishlist/Cart) */
 .header-actions-btn .icon {
     color: #0f172a;
     transition: color .2s ease;
@@ -163,6 +157,7 @@
     color: #4AC9E3;
 }
 
+/* Header-Links allgemein (nur Header-Reihe; Top-Bar oben bereits definiert) */
 .header-main .header-row a {
     color: #0f172a;
     text-decoration: none;
@@ -174,15 +169,22 @@
     text-decoration: none;
 }
 
+/* -----------------------------------------
+   RESPONSIVE OPTIMIERUNGEN (nur Layout)
+   ----------------------------------------- */
+
+/* Input-Feld höher auf Tablets/Desktop */
 @media (min-width: 768px) {
     .header-search-col .header-search-input {
         min-height: 45px;
     }
 }
 
+/* Suche mittig begrenzen (Desktop) */
 @media (min-width: 992px) {
     .header-row .header-search-col .header-search {
         max-width: 570px;
+        /* ~35.6rem */
         margin: 0 auto;
     }
 }
