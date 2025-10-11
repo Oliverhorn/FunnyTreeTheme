@@ -10,10 +10,10 @@
 
 /* Root-Level Variablen (fixe Designwerte, manuell gepflegt) */
 :root {
-    --ft-base-radius: 12px;
-    --ft-container-max: 1320px;
-    --ft-shadow-md: 0 8px 24px rgba(0, 0, .08);
-    --ft-page-bg: #f8f9fa;
+   --ft-base-radius: 12px;
+   --ft-container-max: 1400px;
+   --ft-shadow-md: 0 8px 24px rgba(0, 0, .08);
+   --ft-page-bg: #f8f9fa;
 }
 
 /* Fallback-Werte für SCSS-Berechnungen */
