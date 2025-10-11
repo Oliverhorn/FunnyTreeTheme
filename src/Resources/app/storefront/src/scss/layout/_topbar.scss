@@ -1,0 +1,77 @@
+/* =========================================
+   FunnyTree Top-Bar (clean, ohne EMZ)
+   ========================================= */
+
+.ft-topbar {
+    background: #0b1220;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.875rem;
+}
+
+/* Layout der inneren Zeile */
+.ft-topbar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.35rem 1rem;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+/* Linke Seite (Telefon) */
+.ft-topbar__left {
+    display: flex;
+    align-items: center;
+}
+
+.ft-topbar__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.ft-topbar__link:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.ft-topbar__icon {
+    display: inline-flex;
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+.ft-topbar__icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+/* Rechte Seite (Sprache + Währung) */
+.ft-topbar__right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.ft-topbar__language,
+.ft-topbar__currency {
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .ft-topbar__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
