@@ -3,14 +3,14 @@
 
 {% block layout_header_top_bar %}
 	<div class="ft-topbar">
-		<div
-			class="container ft-topbar__inner">
+		<div class="container ft-topbar__inner">
 
-			{# Linke Seite: Telefon – nur Desktop sichtbar #}
 			{% set phoneNumber = theme_config('ft-topbar-phone')|default('') %}
+			{% set phoneAria   = theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') %}
+
 			{% if phoneNumber %}
 				<div class="ft-topbar__left">
-					<a href="tel:{{ phoneNumber|replace({' ': '', '(': '', ')': '', '-': ''}) }}" class="ft-topbar__link ft-topbar__tel d-none d-md-inline-flex" title="Hotline" rel="noopener" aria-label="Hotline anrufen">
+					<a href="tel:{{ phoneNumber|replace({' ': '', '(': '', ')': '', '-': ''}) }}" class="ft-topbar__link ft-topbar__tel d-none d-md-inline-flex" title="{{ phoneAria }}" rel="noopener" aria-label="{{ phoneAria }}">
 						<span class="ft-topbar__icon">
 							{% sw_include '@FunnyTreeTheme/icons/phone.svg' %}
 						</span>
@@ -19,8 +19,6 @@
 				</div>
 			{% endif %}
 
-
-			{# Rechte Seite: Sprache & Währung #}
 			<div class="ft-topbar__right">
 				<div class="ft-topbar__language">
 					{% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}

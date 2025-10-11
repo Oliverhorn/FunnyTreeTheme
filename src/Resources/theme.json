@@ -81,6 +81,20 @@
         },
         "tab": "Header",
         "block": "Top-Bar"
+      },
+      "ft-topbar-phone-aria": {
+        "type": "text",
+        "value": "Hotline anrufen",
+        "label": {
+          "de-DE": "ARIA-Label (Telefon)",
+          "en-GB": "ARIA label (Phone)"
+        },
+        "helpText": {
+          "de-DE": "Für Screenreader, z. B. „Hotline anrufen“",
+          "en-GB": "For screen readers, e.g. “Call hotline”"
+        },
+        "tab": "Header",
+        "block": "Top-Bar"
       }
     }
   }
