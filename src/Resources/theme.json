@@ -27,145 +27,54 @@
   ],
   "previewMedia": "app/storefront/src/assets/preview.png",
   "config": {
-    "fields": {
-      "sw-color-brand-primary": {
-        "value": "#16a34a",
-        "tab": "colors"
-      },
-      "sw-color-brand-secondary": {
-        "value": "#0ea5e9",
-        "tab": "colors"
-      },
-      "ft-color-accent": {
-        "type": "color",
-        "value": "#f97316",
-        "tab": "colors"
-      },
-      "ft-font-family-sans": {
-        "type": "fontFamily",
-        "value": "Poppins, Inter, system-ui, Arial, sans-serif",
-        "tab": "typography"
-      },
-      "ft-topbar-enabled": {
-        "type": "bool",
-        "value": true,
+    "blocks": {
+      "colors": {
         "label": {
-          "de-DE": "Top-Bar aktivieren",
-          "en-GB": "Enable top bar"
+          "de-DE": "Farben",
+          "en-GB": "Colors"
         },
-        "tab": "topbar"
+        "fields": {
+          "sw-color-brand-primary": {
+            "type": "color",
+            "value": "#16a34a",
+            "label": {
+              "de-DE": "Primärfarbe",
+              "en-GB": "Primary color"
+            }
+          },
+          "sw-color-brand-secondary": {
+            "type": "color",
+            "value": "#0ea5e9",
+            "label": {
+              "de-DE": "Sekundärfarbe",
+              "en-GB": "Secondary color"
+            }
+          },
+          "ft-color-accent": {
+            "type": "color",
+            "value": "#f97316",
+            "label": {
+              "de-DE": "Akzentfarbe",
+              "en-GB": "Accent color"
+            }
+          }
+        }
       },
-      "ft-topbar-note": {
-        "type": "text",
-        "value": "📦 Kostenloser Versand ab 50 €",
+      "typography": {
         "label": {
-          "de-DE": "Hinweis (Mitte)",
-          "en-GB": "Center note"
+          "de-DE": "Typografie",
+          "en-GB": "Typography"
         },
-        "tab": "topbar"
-      },
-      "ft-topbar-phone": {
-        "type": "text",
-        "value": "+49 8241 123456",
-        "label": {
-          "de-DE": "Telefonnummer",
-          "en-GB": "Phone number"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-tel-text": {
-        "type": "text",
-        "value": "Hotline",
-        "label": {
-          "de-DE": "Telefon-Label",
-          "en-GB": "Phone label"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-email": {
-        "type": "text",
-        "value": "service",
-        "label": {
-          "de-DE": "E-Mail (optional)",
-          "en-GB": "E-mail (optional)"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-whatsapp": {
-        "type": "text",
-        "value": "",
-        "label": {
-          "de-DE": "WhatsApp-Nummer (optional)",
-          "en-GB": "WhatsApp number (optional)"
-        },
-        "helpText": {
-          "de-DE": "Nur Ziffern, z. B. 491701234567",
-          "en-GB": "Digits only, e.g. 491701234567"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-show-language": {
-        "type": "bool",
-        "value": true,
-        "label": {
-          "de-DE": "Sprachwahl anzeigen",
-          "en-GB": "Show language switcher"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-show-currency": {
-        "type": "bool",
-        "value": true,
-        "label": {
-          "de-DE": "Währungswahl anzeigen",
-          "en-GB": "Show currency switcher"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-bg": {
-        "type": "color",
-        "value": "#0b1220",
-        "label": {
-          "de-DE": "Hintergrund",
-          "en-GB": "Background"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-fg": {
-        "type": "color",
-        "value": "#ffffff",
-        "label": {
-          "de-DE": "Textfarbe",
-          "en-GB": "Text color"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-border-enabled": {
-        "type": "bool",
-        "value": false,
-        "label": {
-          "de-DE": "Unterkante (Border) anzeigen",
-          "en-GB": "Show bottom border"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-border-color": {
-        "type": "color",
-        "value": "#e5e7eb",
-        "label": {
-          "de-DE": "Farbe Unterkante",
-          "en-GB": "Bottom border color"
-        },
-        "tab": "topbar"
-      },
-      "ft-topbar-icon-tel": {
-        "type": "media",
-        "value": null,
-        "label": {
-          "de-DE": "Telefon-Icon (optional)",
-          "en-GB": "Phone icon (optional)"
-        },
-        "tab": "topbar"
+        "fields": {
+          "ft-font-family-sans": {
+            "type": "fontFamily",
+            "value": "Poppins, Inter, system-ui, Arial, sans-serif",
+            "label": {
+              "de-DE": "Schriftart",
+              "en-GB": "Font family"
+            }
+          }
+        }
       }
     }
   }
