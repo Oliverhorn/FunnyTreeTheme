@@ -42,31 +42,46 @@
     gap: 1.25rem;
 }
 
-/* Telefonlink / generische Links in der Top-Bar */
-.header-main .ft-topbar a {
+/* Telefon-/WhatsApp-Links: Icon & Text sauber mittig */
+.header-main .ft-topbar a.ft-topbar__link {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    line-height: 1;
+    /* verhindert Versatz durch Zeilenhöhe */
     color: inherit;
     text-decoration: none;
     transition: color .2s ease, opacity .2s ease;
 }
 
-.header-main .ft-topbar a:hover {
+.header-main .ft-topbar a.ft-topbar__link:hover {
     color: #4AC9E3;
     /* einheitliche Hover-Farbe */
     text-decoration: none;
     opacity: 1;
 }
 
-/* Icon in der Top-Bar */
+/* Icon in der Top-Bar (mittig zur Schrift) */
 .header-main .ft-topbar__icon {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: .9rem;
     height: .9rem;
 }
 
 .header-main .ft-topbar__icon svg,
 .header-main .ft-topbar__icon svg [fill] {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
     fill: currentColor !important;
     /* SVG übernimmt Textfarbe */
+}
+
+/* (Optional) WhatsApp-grün beim Hover auf dem Link */
+.header-main .ft-topbar__whatsapp:hover {
+    color: #25D366;
 }
 
 /* Mobile Top-Bar */
@@ -151,7 +166,7 @@
     color: #4AC9E3;
 }
 
-/* Header-Links allgemein (nicht Top-Bar – die ist oben schon definiert) */
+/* Header-Links allgemein (nur Header-Reihe; Top-Bar oben bereits definiert) */
 .header-main .header-row a {
     color: #0f172a;
     text-decoration: none;

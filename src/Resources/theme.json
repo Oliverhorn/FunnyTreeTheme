@@ -52,6 +52,26 @@
           "en-GB": "For screen readers, e.g. “Call hotline”"
         }
       },
+      "ft-topbar-whatsapp": {
+        "type": "text",
+        "value": "491701234567",
+        "label": {
+          "de-DE": "WhatsApp-Nummer",
+          "en-GB": "WhatsApp number"
+        },
+        "helpText": {
+          "de-DE": "Nur Ziffern, z. B. 491701234567",
+          "en-GB": "Digits only, e.g. 491701234567"
+        }
+      },
+      "ft-topbar-whatsapp-aria": {
+        "type": "text",
+        "value": "WhatsApp-Chat starten",
+        "label": {
+          "de-DE": "ARIA-Label (WhatsApp)",
+          "en-GB": "ARIA label (WhatsApp)"
+        }
+      },
       "ft-topbar-note": {
         "type": "text",
         "value": "📦 Kostenloser Versand ab 50 €",

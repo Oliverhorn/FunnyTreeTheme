@@ -1,24 +1,41 @@
-{# src/Resources/views/storefront/layout/header/top-bar.html.twig #}
 {% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
 
 {% block layout_header_top_bar %}
 	<div class="ft-topbar">
-		<div class="container ft-topbar__inner">
+		<div
+			class="container ft-topbar__inner">
 
-			{% set phoneNumber = theme_config('ft-topbar-phone')|default('') %}
-			{% set phoneAria   = theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') %}
-
-			{% if phoneNumber %}
-				<div class="ft-topbar__left">
-					<a href="tel:{{ phoneNumber|replace({' ': '', '(': '', ')': '', '-': ''}) }}" class="ft-topbar__link ft-topbar__tel d-none d-md-inline-flex" title="{{ phoneAria }}" rel="noopener" aria-label="{{ phoneAria }}">
-						<span class="ft-topbar__icon">
+			{# LEFT: Desktop = Telefon, < LG = WhatsApp #}
+			<div
+				class="ft-topbar__left">
+				{# Telefon (nur ab lg sichtbar) #}
+				{% set tel = theme_config('ft-topbar-phone')|default('') %}
+				{% if tel %}
+					<a href="tel:{{ tel|replace({' ': '', '(': '', ')': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__tel d-none d-lg-inline-flex" aria-label="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}" title="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}">
+						<span
+							class="ft-topbar__icon">
+							{# Eigenes Icon bereitstellen: src/Resources/views/icons/phone.svg #}
 							{% sw_include '@FunnyTreeTheme/icons/phone.svg' %}
 						</span>
-						<span class="ft-topbar__text">{{ phoneNumber }}</span>
+						<span class="ft-topbar__text">{{ tel }}</span>
 					</a>
-				</div>
-			{% endif %}
+				{% endif %}
 
+				{# WhatsApp (bis lg sichtbar) #}
+				{% set wa = theme_config('ft-topbar-whatsapp')|default('') %}
+				{% if wa %}
+					<a href="https://wa.me/{{ wa|replace({' ': '', '+': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__whatsapp d-inline-flex d-lg-none" target="_blank" rel="noopener" aria-label="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}" title="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}">
+						<span
+							class="ft-topbar__icon">
+							{# Eigenes Icon bereitstellen: src/Resources/views/icons/whatsapp.svg #}
+							{% sw_include '@FunnyTreeTheme/icons/whatsapp.svg' %}
+						</span>
+						<span class="ft-topbar__text">{{ wa }}</span>
+					</a>
+				{% endif %}
+			</div>
+
+			{# RIGHT: Sprache & Währung #}
 			<div class="ft-topbar__right">
 				<div class="ft-topbar__language">
 					{% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}
