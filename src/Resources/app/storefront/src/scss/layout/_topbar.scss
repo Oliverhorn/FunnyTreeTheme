@@ -3,10 +3,11 @@
    ========================================= */
 
 .ft-topbar {
-    background: #fff;
-    color: #ffffff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 0.875rem;
+    background: #ffffff;
+    color: #0f172a;
+    /* Icons erben currentColor */
+    border-bottom: 1px solid #000000;
+    /* schwarzer Strich unten */
 }
 
 /* Layout der inneren Zeile */
