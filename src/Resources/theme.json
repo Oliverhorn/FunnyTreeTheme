@@ -27,74 +27,60 @@
   ],
   "previewMedia": "app/storefront/src/assets/preview.png",
   "config": {
-    "blocks": {
-      "colors": {
+    "fields": {
+      "sw-color-brand-primary": {
+        "type": "color",
+        "value": "#16a34a",
         "label": {
-          "de-DE": "Farben",
-          "en-GB": "Colors"
+          "de-DE": "Primärfarbe",
+          "en-GB": "Primary color"
         },
-        "fields": {
-          "sw-color-brand-primary": {
-            "type": "color",
-            "value": "#16a34a",
-            "label": {
-              "de-DE": "Primärfarbe",
-              "en-GB": "Primary color"
-            }
-          },
-          "sw-color-brand-secondary": {
-            "type": "color",
-            "value": "#0ea5e9",
-            "label": {
-              "de-DE": "Sekundärfarbe",
-              "en-GB": "Secondary color"
-            }
-          },
-          "ft-color-accent": {
-            "type": "color",
-            "value": "#f97316",
-            "label": {
-              "de-DE": "Akzentfarbe",
-              "en-GB": "Accent color"
-            }
-          }
-        }
+        "tab": "Design",
+        "block": "Farben"
       },
-      "typography": {
+      "sw-color-brand-secondary": {
+        "type": "color",
+        "value": "#0ea5e9",
         "label": {
-          "de-DE": "Typografie",
-          "en-GB": "Typography"
+          "de-DE": "Sekundärfarbe",
+          "en-GB": "Secondary color"
         },
-        "fields": {
-          "ft-font-family-sans": {
-            "type": "fontFamily",
-            "value": "Poppins, Inter, system-ui, Arial, sans-serif",
-            "label": {
-              "de-DE": "Schriftart",
-              "en-GB": "Font family"
-            }
-          }
-        }
+        "tab": "Design",
+        "block": "Farben"
       },
-      "topbar": {
+      "ft-color-accent": {
+        "type": "color",
+        "value": "#f97316",
         "label": {
-          "de-DE": "Top-Bar",
-          "en-GB": "Top Bar"
+          "de-DE": "Akzentfarbe",
+          "en-GB": "Accent color"
         },
-        "fields": {
-          "ft-topbar-phone": {
-            "type": "text",
-            "value": "+49 8241 9966483",
-            "label": {
-              "de-DE": "Telefonnummer",
-              "en-GB": "Phone number"
-            },
-            "helpText": {
-              "de-DE": "Internationales Format, z. B. +49 8241 9966483",
-              "en-GB": "International format, e.g. +49 8241 9966483"
-            }
-          }
-        }
+        "tab": "Design",
+        "block": "Farben"
+      },
+      "ft-font-family-sans": {
+        "type": "fontFamily",
+        "value": "Poppins, Inter, system-ui, Arial, sans-serif",
+        "label": {
+          "de-DE": "Schriftart",
+          "en-GB": "Font family"
+        },
+        "tab": "Design",
+        "block": "Typografie"
+      },
+      "ft-topbar-phone": {
+        "type": "text",
+        "value": "+49 8241 9966483",
+        "label": {
+          "de-DE": "Telefonnummer",
+          "en-GB": "Phone number"
+        },
+        "helpText": {
+          "de-DE": "Internationales Format, z. B. +49 8241 9966483",
+          "en-GB": "International format, e.g. +49 8241 9966483"
+        },
+        "tab": "Header",
+        "block": "Top-Bar"
       }
     }
   }
