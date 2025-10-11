@@ -90,8 +90,8 @@
               "en-GB": "Phone number"
             },
             "helpText": {
-              "de-DE": "Gib die Telefonnummer im internationalen Format an, z. B. +49 8241 9966483",
-              "en-GB": "Enter the phone number in international format, e.g. +49 8241 9966483"
+              "de-DE": "Internationales Format, z. B. +49 8241 9966483",
+              "en-GB": "International format, e.g. +49 8241 9966483"
             }
           }
         }
