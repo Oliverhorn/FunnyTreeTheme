@@ -6,14 +6,14 @@
 		<div
 			class="container ft-topbar__inner">
 
-			{# LEFT: Desktop = Telefon / <LG = WhatsApp #}
+			{# LEFT: Desktop = Telefon / < LG = WhatsApp #}
 			<div
 				class="ft-topbar__left">
 
-				{# 📞 Telefon-Link – nur Desktop sichtbar #}
+				{# 📞 Telefon — nur Desktop sichtbar #}
 				{% set tel = theme_config('ft-topbar-phone')|default('') %}
 				{% if tel %}
-					<a href="tel:{{ tel|replace({' ': '', '(': '', ')': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__tel d-none d-lg-inline-flex" aria-label="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}" title="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}">
+					<a href="tel:{{ tel|replace({' ': '', '(': '', ')': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__tel d-none d-lg-inline-flex align-items-center gap-2" aria-label="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}" title="{{ theme_config('ft-topbar-phone-aria')|default('Hotline anrufen') }}">
 						<span class="ft-topbar__icon">
 							{% sw_include '@FunnyTreeTheme/icons/phone.svg' %}
 						</span>
@@ -21,13 +21,13 @@
 					</a>
 				{% endif %}
 
-				{# 💬 WhatsApp-Link – nur auf Mobile/Tablet sichtbar #}
+				{# 💬 WhatsApp — nur Mobile/Tablet sichtbar #}
 				{% set wa = theme_config('ft-topbar-whatsapp')|default('') %}
 				{% if wa %}
-					<a href="https://wa.me/{{ wa|replace({' ': '', '+': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__whatsapp d-inline-flex d-lg-none" target="_blank" rel="noopener" aria-label="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}" title="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}">
+					<a href="https://wa.me/{{ wa|replace({' ': '', '+': '', '-': ''})|e }}" class="ft-topbar__link ft-topbar__whatsapp d-inline-flex d-lg-none align-items-center" target="_blank" rel="noopener" aria-label="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}" title="{{ theme_config('ft-topbar-whatsapp-aria')|default('WhatsApp-Chat starten') }}">
 						<span
 							class="ft-topbar__icon ft-topbar__icon--whatsapp">
-							{# wichtig: kein currentColor → echtes WhatsApp-Grün bleibt erhalten #}
+							{# wichtig: WhatsApp-SVG behält sein eigenes Grün #}
 							{% sw_include '@FunnyTreeTheme/icons/whatsapp.svg' %}
 						</span>
 					</a>
