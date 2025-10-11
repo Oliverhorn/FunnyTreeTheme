@@ -7,17 +7,17 @@
 			class="container ft-topbar__inner">
 
 			{# Linke Seite: Telefon – nur Desktop sichtbar #}
-			<div class="ft-topbar__left">
-				<a href="tel:+4982419966483" class="ft-topbar__link ft-topbar__tel d-none d-md-inline-flex" title="Hotline" rel="noopener" aria-label="Hotline anrufen">
-					<span class="ft-topbar__icon">
-						{% sw_include '@FunnyTreeTheme/icons/phone.svg' %}
-					</span>
-					<span class="ft-topbar__text">
-						+49&nbsp;8241&nbsp;996&nbsp;64&nbsp;83
-
-					</span>
-				</a>
-			</div>
+			{% set phoneNumber = theme_config('ft-topbar-phone') %}
+			{% if phoneNumber %}
+				<div class="ft-topbar__left">
+					<a href="tel:{{ phoneNumber|replace({' ': '', '+': '00'}) }}" class="ft-topbar__link ft-topbar__tel d-none d-md-inline-flex" title="Hotline" rel="noopener" aria-label="Hotline anrufen">
+						<span class="ft-topbar__icon">
+							{% sw_include '@FunnyTreeTheme/icons/phone.svg' %}
+						</span>
+						<span class="ft-topbar__text">{{ phoneNumber }}</span>
+					</a>
+				</div>
+			{% endif %}
 
 			{# Rechte Seite: Sprache & Währung #}
 			<div class="ft-topbar__right">
