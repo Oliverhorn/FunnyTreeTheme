@@ -1,0 +1,123 @@
+/* =========================================
+   Header (ohne Twig-Änderungen, Bootstrap-kompatibel)
+   ========================================= */
+
+/* Grundfläche */
+.header-main {
+    background: #fff;
+    box-shadow: none;
+}
+
+/* ---- Zeile mit Logo | Suche | Actions ---- */
+.header-row {
+    /* Sicherstellen, dass die „col-*“-Spalten nebeneinander stehen */
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding: 20px 10px;
+}
+
+/* Spaltenverhalten */
+.menu-toggle-col,
+.header-logo-col,
+.header-actions-col {
+    flex: 0 0 auto;
+    /* Breite aus Inhalt, nicht strecken */
+}
+
+.header-search-col {
+    flex: 1 1 0;
+    /* Suche füllt den freien Platz */
+    min-width: 0;
+    /* nötig für korrektes Truncation-Verhalten */
+}
+
+/* Actions nach rechts schieben */
+.header-actions-col {
+    margin-left: auto;
+}
+
+/* Logo leicht kompakt */
+.header-logo-col .header-logo-main img {
+    height: 34px;
+    width: auto;
+}
+
+/* Suche: Basis */
+.header-search-col .header-search {
+    max-width: 100%;
+    margin: 0;
+}
+
+.header-search-col .header-search-input {
+    border-radius: 12px;
+}
+
+/* Buttons rechts: kompakter Abstand */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Mobile: Core blendet die Desktop-Suche via d-none d-md-block aus.
+   Wir lassen das so und stylen nur die mobile Suchzeile darunter. */
+.header-mobile-search-row {
+    /* liegt unter der Navigation (Core-Template) */
+}
+
+.header-mobile-search-row .header-search-col-mobile .header-search {
+    padding-bottom: 16px;
+}
+
+/* Optional: Hover-Feedback für Icons */
+.header-actions-btn .icon {
+    transition: color .2s ease;
+}
+
+.header-actions-btn:hover .icon {
+    color: #16a34a;
+    /* primärgrün von dir – bei Bedarf anpassen */
+}
+
+/* ---- Top-Bar (nur Rahmen & Layout, wenn du die Core-Top-Bar nutzt) ---- */
+.header-main .top-bar {
+    border-bottom: 1px solid rgba(0, 0, 0, .06);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header-main .top-bar .emz-top-bar-right {
+    display: flex;
+}
+
+.header-main .top-bar .emz-top-bar-right .emz-top-bar-service,
+.header-main .top-bar .emz-top-bar-right .emz-top-bar-currency {
+    margin-left: 20px;
+}
+
+/* ---- Responsive Tweaks ---- */
+
+/* >= md: etwas mehr Suchhöhe */
+@media (min-width: 768px) {
+    .header-search-col .header-search-input {
+        min-height: 45px;
+    }
+}
+
+/* >= lg: Suche mittig begrenzen (EMZ-ähnlich) */
+@media (min-width: 992px) {
+    .header-row .header-search-col .header-search {
+        max-width: 570px;
+        /* ~35.6rem */
+        margin: 0 auto;
+        /* zentriert */
+    }
+}
+
+/* Mobile Layout bleibt Core-gesteuert:
+   - Burger in .menu-toggle-col (per d-lg-none)
+   - Desktop-Suche ausgeblendet (d-none d-md-block)
+   - Mobile Suche in .header-mobile-search-row als Collapse */
