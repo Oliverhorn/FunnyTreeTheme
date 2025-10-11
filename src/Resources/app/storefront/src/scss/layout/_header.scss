@@ -1,18 +1,87 @@
 /* =========================================
-   FunnyTree Header (statisch & wartbar)
+   FunnyTree Header (statisch, inkl. Top-Bar)
    ========================================= */
 
-/* Grundfläche */
+/* Grundfläche Header */
 .header-main {
     background: #ffffff;
     /* Weiß */
     color: #0f172a;
     /* Dunkelblau */
     box-shadow: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color .2s ease, color .2s ease;
 }
 
-/* ---- Zeile mit Logo | Suche | Actions ---- */
+/* -----------------------------------------
+   TOP-BAR (Layout + Design)
+   ----------------------------------------- */
+.header-main .ft-topbar {
+    background: #ffffff;
+    /* gleich wie Header */
+    color: #0f172a;
+    border-bottom: 1px solid #000000;
+    /* schwarze Linie unten */
+}
+
+/* Top-Bar Innenlayout */
+.header-main .ft-topbar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: .35rem 1rem;
+    margin: 0 auto;
+}
+
+/* Links/Rechts-Bereiche */
+.header-main .ft-topbar__left,
+.header-main .ft-topbar__right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* Telefonlink / generische Links in der Top-Bar */
+.header-main .ft-topbar a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s ease, opacity .2s ease;
+}
+
+.header-main .ft-topbar a:hover {
+    color: #4AC9E3;
+    /* einheitliche Hover-Farbe */
+    text-decoration: none;
+    opacity: 1;
+}
+
+/* Icon in der Top-Bar */
+.header-main .ft-topbar__icon {
+    display: inline-flex;
+    width: .9rem;
+    height: .9rem;
+}
+
+.header-main .ft-topbar__icon svg,
+.header-main .ft-topbar__icon svg [fill] {
+    fill: currentColor !important;
+    /* SVG übernimmt Textfarbe */
+}
+
+/* Mobile Top-Bar */
+@media (max-width: 768px) {
+    .header-main .ft-topbar__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .25rem;
+        padding: .5rem .75rem;
+    }
+}
+
+/* -----------------------------------------
+   HEADER-REIHE (Logo | Suche | Actions)
+   ----------------------------------------- */
 .header-row {
     display: flex;
     align-items: center;
@@ -39,13 +108,13 @@
     margin-left: auto;
 }
 
-/* Logo leicht kompakt */
+/* Logo kompakt */
 .header-logo-col .header-logo-main img {
     height: 34px;
     width: auto;
 }
 
-/* Suche: Basis */
+/* Suche */
 .header-search-col .header-search {
     max-width: 100%;
     margin: 0;
@@ -56,47 +125,45 @@
     color: #0f172a;
 }
 
-/* Buttons rechts: kompakter Abstand */
+/* Buttons rechts */
 .header-actions {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* Mobile: Core blendet die Desktop-Suche via d-none d-md-block aus. */
+/* Mobile-Suchzeile (Core) */
 .header-mobile-search-row {
-    /* liegt unter der Navigation (Core-Template) */
+    /* liegt unter der Navigation */
 }
 
 .header-mobile-search-row .header-search-col-mobile .header-search {
     padding-bottom: 16px;
 }
 
-/* Icons im Header erben Textfarbe */
+/* Header-Icons (Account/Wishlist/Cart) */
 .header-actions-btn .icon {
     color: #0f172a;
-    transition: color 0.2s ease;
+    transition: color .2s ease;
 }
 
-/* Hover-Farbe */
 .header-actions-btn:hover .icon {
-    color: #16a34a;
-    /* Primärgrün beim Hover */
+    color: #4AC9E3;
 }
 
-/* Links im Header (z. B. Account, Wunschliste etc.) */
-.header-main a {
+/* Header-Links allgemein (nicht Top-Bar – die ist oben schon definiert) */
+.header-main .header-row a {
     color: #0f172a;
-    transition: color 0.2s ease;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.header-main .header-row a:hover {
+    color: #4AC9E3;
     text-decoration: none;
 }
 
-.header-main a:hover {
-    color: #16a34a;
-    text-decoration: none;
-}
-
-/* ---- Responsive Tweaks ---- */
+/* Responsive Tweaks */
 @media (min-width: 768px) {
     .header-search-col .header-search-input {
         min-height: 45px;
